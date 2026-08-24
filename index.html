@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Your 6 Choices — Teen Mobile Deck</title>
+  <title>Family Vacation 2026 — Pick Our Destination!</title>
   <style>
     :root {
       --bg: #0d0f17;
@@ -36,7 +36,7 @@
       overflow: hidden;
     }
 
-    /* Phone Mockup / Full Screen Container */
+    /* Phone Container */
     .app-container {
       position: relative;
       width: 100vw;
@@ -111,7 +111,7 @@
       justify-content: space-between;
       position: relative;
       background: radial-gradient(circle at top right, rgba(112, 0, 255, 0.25), transparent 60%),
-                  radial-gradient(circle at bottom left, rgba(255, 51, 102, 0.15), transparent 50%);
+                  radial-gradient(circle at bottom left, rgba(255, 51, 102, 0.2), transparent 50%);
     }
 
     /* Slide Header & Badges */
@@ -125,10 +125,10 @@
       font-weight: 700;
       letter-spacing: 0.5px;
       text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.12);
       backdrop-filter: blur(10px);
       width: fit-content;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--accent-3);
     }
 
@@ -138,13 +138,13 @@
       line-height: 1.15;
       letter-spacing: -0.5px;
       margin-top: 12px;
-      background: linear-gradient(135deg, #ffffff 30%, #c0c5ff 100%);
+      background: linear-gradient(135deg, #ffffff 30%, #ffd0e0 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
     .title-option {
-      font-size: 2.4rem;
+      font-size: 2.2rem;
       font-weight: 900;
       line-height: 1.1;
       margin-top: 10px;
@@ -162,8 +162,8 @@
       width: 100%;
       flex: 1;
       margin: 18px 0;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--card-radius);
       display: flex;
       flex-direction: column;
@@ -177,14 +177,14 @@
     }
 
     .hero-icon {
-      font-size: 5rem;
+      font-size: 5.5rem;
       margin-bottom: 12px;
-      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+      filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.5));
     }
 
     .highlight-box {
-      background: linear-gradient(135deg, rgba(255, 51, 102, 0.2), rgba(112, 0, 255, 0.2));
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: linear-gradient(135deg, rgba(255, 51, 102, 0.25), rgba(112, 0, 255, 0.25));
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 16px;
       padding: 16px;
       width: 100%;
@@ -206,19 +206,19 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      background: rgba(255, 255, 255, 0.07);
+      background: rgba(255, 255, 255, 0.08);
       padding: 14px 16px;
       border-radius: 16px;
-      font-size: 0.98rem;
+      font-size: 1rem;
       font-weight: 600;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
 
     .feature-icon {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
     }
 
-    /* Summary Matrix Slide */
+    /* Summary Grid */
     .summary-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -229,8 +229,8 @@
     }
 
     .summary-card {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: 16px;
       padding: 12px;
       display: flex;
@@ -241,7 +241,7 @@
     }
 
     .summary-icon {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
 
     .summary-title {
@@ -274,7 +274,7 @@
       border-radius: 16px;
       padding: 12px 16px;
       color: #fff;
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 700;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -288,8 +288,8 @@
 
     .vote-count {
       font-size: 0.85rem;
-      opacity: 0.8;
-      background: rgba(0, 0, 0, 0.2);
+      opacity: 0.85;
+      background: rgba(0, 0, 0, 0.3);
       padding: 4px 8px;
       border-radius: 10px;
     }
@@ -345,132 +345,132 @@
 
   <script>
     // ----------------------------------------------------
-    // CONFIGURATION: Customize the 6 Choices & Content
+    // VACATION CHOICES CONFIGURATION
     // ----------------------------------------------------
     const CHOICES = [
       {
         id: "choice-1",
-        title: "Option 1: Build Internal",
-        tag: "In-House Speed",
-        icon: "⚡",
+        title: "All-Inclusive Beach Resort",
+        tag: "Cancun / Caribbean",
+        icon: "🏖️",
         slide1: {
           badge: "Option 1 of 6",
-          headline: "Build It In-House",
-          highlight: "Total freedom & zero third-party platform lock-in.",
-          subtitle: "Complete control over features and workflow without external dependencies."
+          headline: "All-Inclusive Beach Resort",
+          highlight: "Unlimited pools, beachfront vibe, and zero stress.",
+          subtitle: "Kick back on white sand beaches with room service, water sports, and non-stop sun."
         },
         slide2: {
-          badge: "Option 1 • Why It Wins",
-          headline: "Fast & Tailored",
+          badge: "Option 1 • The Perks",
+          headline: "Pure Relaxation",
           points: [
-            { icon: "🛠️", text: "Built exactly for our daily workflow" },
-            { icon: "🚀", text: "Immediate iteration with internal code" },
-            { icon: "💰", text: "Zero external vendor fees" }
+            { icon: "🌊", text: "Crystal clear ocean & cabana pools" },
+            { icon: "🍹", text: "Unlimited food, snacks & mocktails" },
+            { icon: "📸", text: "Unbelievable sunset photo spots" }
           ]
         }
       },
       {
         id: "choice-2",
-        title: "Option 2: Continue As-Is",
-        tag: "AI Upgrade",
-        icon: "🤖",
+        title: "Tropical Island Cruise",
+        tag: "Royal Caribbean / Disney",
+        icon: "🛳️",
         slide1: {
           badge: "Option 2 of 6",
-          headline: "Continue As-Is + AI",
-          highlight: "Keep existing setup + unlock new AI Agentic tools.",
-          subtitle: "No downtime or migration risks — just add smart AI automation."
+          headline: "Mega Cruise Ship Adventure",
+          highlight: "Explore multiple tropical islands on one epic ship.",
+          subtitle: "Water slides, live shows, private island stops, and endless onboard fun."
         },
         slide2: {
-          badge: "Option 2 • Why It Wins",
-          headline: "Zero Downtime",
+          badge: "Option 2 • The Perks",
+          headline: "Action Packed",
           points: [
-            { icon: "✨", text: "Includes AI Copilot tools right away" },
-            { icon: "🔒", text: "Zero user retraining required" },
-            { icon: "⚡", text: "Instant activation with no dev delay" }
+            { icon: "🏝️", text: "Wake up to a brand new island every day" },
+            { icon: "🏄‍♀️", text: "Onboard surf simulators & water parks" },
+            { icon: "🎭", text: "Broadway-style shows & night events" }
           ]
         }
       },
       {
         id: "choice-3",
-        title: "Option 3: Hybrid Build",
-        tag: "Best of Both",
-        icon: "🔀",
+        title: "Hawaii Island Hop",
+        tag: "Maui / Oahu",
+        icon: "🌺",
         slide1: {
           badge: "Option 3 of 6",
-          headline: "Hybrid Intake + Build",
-          highlight: "Buy smart intake + custom build the core engine.",
-          subtitle: "Leverage polished intake tools while keeping core logic internal."
+          headline: "Hawaii Island Explorer",
+          highlight: "Volcanoes, surfing lessons, and luau celebrations.",
+          subtitle: "Experience iconic beaches, waterfall hikes, and authentic Hawaiian culture."
         },
         slide2: {
-          badge: "Option 3 • Why It Wins",
-          headline: "Balanced Power",
+          badge: "Option 3 • The Perks",
+          headline: "Bucket List Trip",
           points: [
-            { icon: "🎯", text: "Polished customer intake experience" },
-            { icon: "🧩", text: "Custom logic engine where it matters" },
-            { icon: "📈", text: "High flexibility for future updates" }
+            { icon: "🌋", text: "Hike stunning green valleys & waterfalls" },
+            { icon: "🐢", text: "Snorkel with sea turtles in blue lagoons" },
+            { icon: "🏄‍♂️", text: "Learn to surf at Waikiki Beach" }
           ]
         }
       },
       {
         id: "choice-4",
-        title: "Option 4: Full Suite",
-        tag: "All-In-One",
-        icon: "🔥",
+        title: "Theme Park Thrills",
+        tag: "Universal & Disney Orlando",
+        icon: "🏰",
         slide1: {
           badge: "Option 4 of 6",
-          headline: "The Full Platform",
-          highlight: "Complete end-to-end modern platform upgrade.",
-          subtitle: "Maximum features, full automation, and turnkey enterprise scale."
+          headline: "Theme Park Takeover",
+          highlight: "Harry Potter World, Velocicoaster, and epic rides.",
+          subtitle: "Immerse yourself in world-class rollercoasters, themed lands, and nightly fireworks."
         },
         slide2: {
-          badge: "Option 4 • Why It Wins",
-          headline: "Maximum Capability",
+          badge: "Option 4 • The Perks",
+          headline: "Non-Stop Thrills",
           points: [
-            { icon: "🚀", text: "Complete end-to-end automation" },
-            { icon: "📊", text: "Built-in analytics & real-time reports" },
-            { icon: "🏆", text: "Top-tier enterprise security & speed" }
+            { icon: "🎢", text: "Ride the world's highest rated coasters" },
+            { icon: "🪄", text: "Explore Diagon Alley & Star Wars Land" },
+            { icon: "🎆", text: "VIP express passes & fireworks shows" }
           ]
         }
       },
       {
         id: "choice-5",
-        title: "Option 5: Cloud Native",
-        tag: "Ultra Modern",
-        icon: "☁️",
+        title: "Costa Rica Rainforest",
+        tag: "Eco-Adventure & Zip-Line",
+        icon: "🌋",
         slide1: {
           badge: "Option 5 of 6",
-          headline: "Cloud Native Micro-Apps",
-          highlight: "Lightweight, cloud-based modular services.",
-          subtitle: "Deploy fast, scale infinitely, and update components independently."
+          headline: "Costa Rica Jungle Explorer",
+          highlight: "Zip-lining through rainforests, hot springs & wildlife.",
+          subtitle: "An unforgettable eco-adventure with sloths, monkeys, and volcanic hot springs."
         },
         slide2: {
-          badge: "Option 5 • Why It Wins",
-          headline: "Future Proof",
+          badge: "Option 5 • The Perks",
+          headline: "Pure Adventure",
           points: [
-            { icon: "📱", text: "Mobile-first responsive architecture" },
-            { icon: "⚡", text: "Lightning fast loads & automatic scale" },
-            { icon: "🛠️", text: "Easy to swap components later" }
+            { icon: "🦥", text: "See wild sloths & monkeys up close" },
+            { icon: "⚡", text: "Zip-line across mountain canopy tops" },
+            { icon: "♨️", text: "Relax in natural volcanic hot springs" }
           ]
         }
       },
       {
         id: "choice-6",
-        title: "Option 6: Fast Track AI",
-        tag: "AI First",
-        icon: "🧠",
+        title: "European City Tour",
+        tag: "London, Paris or Tokyo",
+        icon: "✈️",
         slide1: {
           badge: "Option 6 of 6",
-          headline: "AI-First Automation",
-          highlight: "Fully automated AI assistant handling key tasks.",
-          subtitle: "Autonomous triage, smart routing, and instant responses."
+          headline: "Global City Experience",
+          highlight: "World-class shopping, sights, culture, and street food.",
+          subtitle: "Explore famous landmarks, amazing fashion districts, and iconic global sights."
         },
         slide2: {
-          badge: "Option 6 • Why It Wins",
-          headline: "Smart & Fast",
+          badge: "Option 6 • The Perks",
+          headline: "Culture & Sights",
           points: [
-            { icon: "🤖", text: "Self-learning workflow optimization" },
-            { icon: "⏱️", text: "Reduces manual work by up to 80%" },
-            { icon: "⭐", text: "Super crisp user experience" }
+            { icon: "🗼", text: "Eiffel Tower, Big Ben, or Shibuya Crossing" },
+            { icon: "🛍️", text: "Awesome shopping & local food spots" },
+            { icon: "📸", text: "Incredible aesthetic aesthetic photos" }
           ]
         }
       }
@@ -480,7 +480,7 @@
     let currentSlide = 0;
     let totalSlides = 0;
     let selectedVote = null;
-    let votes = JSON.parse(localStorage.getItem('teen_votes') || '{}');
+    let votes = JSON.parse(localStorage.getItem('vacation_votes') || '{}');
 
     // Initialize Application
     function init() {
@@ -493,16 +493,16 @@
       slidesHTML += `
         <div class="slide">
           <div>
-            <span class="badge">🔥 Decision Time</span>
-            <h1 class="title-large">Here Are Your<br>6 Choices</h1>
-            <p class="subtitle">Swipe or tap right to check out the 6 options, compare them, and cast your vote!</p>
+            <span class="badge">✈️ Vacation 2026</span>
+            <h1 class="title-large">Where Are We<br>Going Next?</h1>
+            <p class="subtitle">Here are our 6 vacation choices! Swipe or tap right to check them out, compare options, and vote on your top pick!</p>
           </div>
           <div class="visual-card">
-            <div class="hero-icon">📱✨</div>
-            <div class="highlight-box">Tap right to start explore →</div>
+            <div class="hero-icon">🌴✈️</div>
+            <div class="highlight-box">Tap right to start exploring →</div>
           </div>
           <div class="slide-footer">
-            <span>Teen Phone Edition</span>
+            <span>Family Choice Edition</span>
             <span>Tap right to start</span>
           </div>
         </div>
@@ -549,7 +549,7 @@
               </ul>
             </div>
             <div class="slide-footer">
-              <span>Next choice next →</span>
+              <span>Next option next →</span>
               <span>Slide 2/2</span>
             </div>
           </div>
@@ -568,9 +568,9 @@
       slidesHTML += `
         <div class="slide">
           <div>
-            <span class="badge">📊 All 6 Choices</span>
-            <h2 class="title-option">Summary Grid</h2>
-            <p class="subtitle">Here are all 6 options side-by-side before you vote.</p>
+            <span class="badge">📊 All 6 Options</span>
+            <h2 class="title-option">Vacation Grid</h2>
+            <p class="subtitle">Here are all 6 vacation choices side-by-side before you vote.</p>
           </div>
           <div class="summary-grid">
             ${summaryCardsHTML}
@@ -586,16 +586,16 @@
       slidesHTML += `
         <div class="slide">
           <div>
-            <span class="badge">🗳️ Final Step</span>
-            <h2 class="title-option">Cast Your Vote</h2>
-            <p class="subtitle">Pick your favorite option out of the 6 choices!</p>
+            <span class="badge">🗳️ Vote Now</span>
+            <h2 class="title-option">Pick Your Top Trip!</h2>
+            <p class="subtitle">Cast your vote for where you want to go!</p>
           </div>
           <div class="vote-options" id="voteOptions"></div>
           <div>
-            <button class="submit-vote-btn" onclick="submitVote()">Submit Vote 🎉</button>
+            <button class="submit-vote-btn" onclick="submitVote()">Submit My Vote 🎉</button>
           </div>
           <div class="slide-footer">
-            <span>Instant Tally</span>
+            <span>Live Family Tally</span>
             <span>Final Slide</span>
           </div>
         </div>
@@ -642,12 +642,12 @@
 
     function submitVote() {
       if (!selectedVote) {
-        alert("Please tap one of the 6 choices to select your vote first!");
+        alert("Please tap one of the 6 vacation choices to select your vote first!");
         return;
       }
 
       votes[selectedVote] = (votes[selectedVote] || 0) + 1;
-      localStorage.setItem('teen_votes', JSON.stringify(votes));
+      localStorage.setItem('vacation_votes', JSON.stringify(votes));
       renderVotingOptions();
 
       const selectedChoiceObj = CHOICES.find(c => c.id === selectedVote);
