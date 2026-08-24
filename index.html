@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Your 6 Choices — Teen Mobile Deck</title>
+  <style>
+    :root {
+      --bg: #0d0f17;
+      --card-bg: #1a1d2e;
+      --accent-1: #ff3366;
+      --accent-2: #7000ff;
+      --accent-3: #00f2fe;
+      --text: #ffffff;
+      --text-sub: #a0a5c0;
+      --card-radius: 24px;
+      --font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: #050608;
+      color: var(--text);
+      font-family: var(--font-family);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Phone Mockup / Full Screen Container */
+    .app-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      max-width: 440px;
+      max-height: 920px;
+      background: var(--bg);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    @media (min-width: 450px) and (min-height: 700px) {
+      .app-container {
+        border-radius: 36px;
+        height: 90vh;
+        border: 2px solid #2a2e45;
+      }
+    }
+
+    /* Top Progress Bar */
+    .progress-bar-container {
+      position: absolute;
+      top: 14px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      gap: 4px;
+      z-index: 100;
+    }
+
+    .progress-segment {
+      flex: 1;
+      height: 4px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 0%;
+      background: #ffffff;
+      border-radius: 2px;
+      transition: width 0.2s linear;
+    }
+
+    .progress-segment.active .progress-fill {
+      width: 100%;
+    }
+
+    .progress-segment.completed .progress-fill {
+      width: 100%;
+    }
+
+    /* Slides Viewport */
+    .slides-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .slide {
+      min-width: 100%;
+      height: 100%;
+      padding: 60px 24px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      background: radial-gradient(circle at top right, rgba(112, 0, 255, 0.25), transparent 60%),
+                  radial-gradient(circle at bottom left, rgba(255, 51, 102, 0.15), transparent 50%);
+    }
+
+    /* Slide Header & Badges */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      width: fit-content;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--accent-3);
+    }
+
+    .title-large {
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+      margin-top: 12px;
+      background: linear-gradient(135deg, #ffffff 30%, #c0c5ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .title-option {
+      font-size: 2.4rem;
+      font-weight: 900;
+      line-height: 1.1;
+      margin-top: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.05rem;
+      color: var(--text-sub);
+      line-height: 1.45;
+      margin-top: 8px;
+    }
+
+    /* Visual Card / Hero Graphic */
+    .visual-card {
+      width: 100%;
+      flex: 1;
+      margin: 18px 0;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: var(--card-radius);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-icon {
+      font-size: 5rem;
+      margin-bottom: 12px;
+      filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    }
+
+    .highlight-box {
+      background: linear-gradient(135deg, rgba(255, 51, 102, 0.2), rgba(112, 0, 255, 0.2));
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      padding: 16px;
+      width: 100%;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    /* Bullet List on Slide B */
+    .feature-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.07);
+      padding: 14px 16px;
+      border-radius: 16px;
+      font-size: 0.98rem;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .feature-icon {
+      font-size: 1.3rem;
+    }
+
+    /* Summary Matrix Slide */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin: 14px 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .summary-card {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+    }
+
+    .summary-icon {
+      font-size: 2rem;
+    }
+
+    .summary-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .summary-tag {
+      font-size: 0.7rem;
+      color: var(--accent-3);
+      font-weight: 600;
+    }
+
+    /* Voting Slide */
+    .vote-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 14px 0;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .vote-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 12px 16px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .vote-btn:active, .vote-btn.selected {
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      border-color: #fff;
+      transform: scale(0.98);
+    }
+
+    .vote-count {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 4px 8px;
+      border-radius: 10px;
+    }
+
+    .submit-vote-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 20px;
+      border: none;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: #fff;
+      font-size: 1.1rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(255, 51, 102, 0.4);
+    }
+
+    /* Tap Control Overlay */
+    .tap-zone {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 35%;
+      z-index: 50;
+    }
+    .tap-zone.left { left: 0; }
+    .tap-zone.right { right: 0; width: 65%; }
+
+    /* Footer Prompt */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--text-sub);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- Top Story Progress Bar -->
+    <div class="progress-bar-container" id="progressBar"></div>
+
+    <!-- Invisible Tap Zones for Navigation -->
+    <div class="tap-zone left" onclick="prevSlide()"></div>
+    <div class="tap-zone right" onclick="nextSlide()"></div>
+
+    <!-- Slides Wrapper -->
+    <div class="slides-wrapper" id="slidesWrapper"></div>
+  </div>
+
+  <script>
+    // ----------------------------------------------------
+    // CONFIGURATION: Customize the 6 Choices & Content
+    // ----------------------------------------------------
+    const CHOICES = [
+      {
+        id: "choice-1",
+        title: "Option 1: Build Internal",
+        tag: "In-House Speed",
+        icon: "⚡",
+        slide1: {
+          badge: "Option 1 of 6",
+          headline: "Build It In-House",
+          highlight: "Total freedom & zero third-party platform lock-in.",
+          subtitle: "Complete control over features and workflow without external dependencies."
+        },
+        slide2: {
+          badge: "Option 1 • Why It Wins",
+          headline: "Fast & Tailored",
+          points: [
+            { icon: "🛠️", text: "Built exactly for our daily workflow" },
+            { icon: "🚀", text: "Immediate iteration with internal code" },
+            { icon: "💰", text: "Zero external vendor fees" }
+          ]
+        }
+      },
+      {
+        id: "choice-2",
+        title: "Option 2: Continue As-Is",
+        tag: "AI Upgrade",
+        icon: "🤖",
+        slide1: {
+          badge: "Option 2 of 6",
+          headline: "Continue As-Is + AI",
+          highlight: "Keep existing setup + unlock new AI Agentic tools.",
+          subtitle: "No downtime or migration risks — just add smart AI automation."
+        },
+        slide2: {
+          badge: "Option 2 • Why It Wins",
+          headline: "Zero Downtime",
+          points: [
+            { icon: "✨", text: "Includes AI Copilot tools right away" },
+            { icon: "🔒", text: "Zero user retraining required" },
+            { icon: "⚡", text: "Instant activation with no dev delay" }
+          ]
+        }
+      },
+      {
+        id: "choice-3",
+        title: "Option 3: Hybrid Build",
+        tag: "Best of Both",
+        icon: "🔀",
+        slide1: {
+          badge: "Option 3 of 6",
+          headline: "Hybrid Intake + Build",
+          highlight: "Buy smart intake + custom build the core engine.",
+          subtitle: "Leverage polished intake tools while keeping core logic internal."
+        },
+        slide2: {
+          badge: "Option 3 • Why It Wins",
+          headline: "Balanced Power",
+          points: [
+            { icon: "🎯", text: "Polished customer intake experience" },
+            { icon: "🧩", text: "Custom logic engine where it matters" },
+            { icon: "📈", text: "High flexibility for future updates" }
+          ]
+        }
+      },
+      {
+        id: "choice-4",
+        title: "Option 4: Full Suite",
+        tag: "All-In-One",
+        icon: "🔥",
+        slide1: {
+          badge: "Option 4 of 6",
+          headline: "The Full Platform",
+          highlight: "Complete end-to-end modern platform upgrade.",
+          subtitle: "Maximum features, full automation, and turnkey enterprise scale."
+        },
+        slide2: {
+          badge: "Option 4 • Why It Wins",
+          headline: "Maximum Capability",
+          points: [
+            { icon: "🚀", text: "Complete end-to-end automation" },
+            { icon: "📊", text: "Built-in analytics & real-time reports" },
+            { icon: "🏆", text: "Top-tier enterprise security & speed" }
+          ]
+        }
+      },
+      {
+        id: "choice-5",
+        title: "Option 5: Cloud Native",
+        tag: "Ultra Modern",
+        icon: "☁️",
+        slide1: {
+          badge: "Option 5 of 6",
+          headline: "Cloud Native Micro-Apps",
+          highlight: "Lightweight, cloud-based modular services.",
+          subtitle: "Deploy fast, scale infinitely, and update components independently."
+        },
+        slide2: {
+          badge: "Option 5 • Why It Wins",
+          headline: "Future Proof",
+          points: [
+            { icon: "📱", text: "Mobile-first responsive architecture" },
+            { icon: "⚡", text: "Lightning fast loads & automatic scale" },
+            { icon: "🛠️", text: "Easy to swap components later" }
+          ]
+        }
+      },
+      {
+        id: "choice-6",
+        title: "Option 6: Fast Track AI",
+        tag: "AI First",
+        icon: "🧠",
+        slide1: {
+          badge: "Option 6 of 6",
+          headline: "AI-First Automation",
+          highlight: "Fully automated AI assistant handling key tasks.",
+          subtitle: "Autonomous triage, smart routing, and instant responses."
+        },
+        slide2: {
+          badge: "Option 6 • Why It Wins",
+          headline: "Smart & Fast",
+          points: [
+            { icon: "🤖", text: "Self-learning workflow optimization" },
+            { icon: "⏱️", text: "Reduces manual work by up to 80%" },
+            { icon: "⭐", text: "Super crisp user experience" }
+          ]
+        }
+      }
+    ];
+
+    // State Variables
+    let currentSlide = 0;
+    let totalSlides = 0;
+    let selectedVote = null;
+    let votes = JSON.parse(localStorage.getItem('teen_votes') || '{}');
+
+    // Initialize Application
+    function init() {
+      const wrapper = document.getElementById('slidesWrapper');
+      const progress = document.getElementById('progressBar');
+
+      let slidesHTML = '';
+
+      // 1. Intro Slide
+      slidesHTML += `
+        <div class="slide">
+          <div>
+            <span class="badge">🔥 Decision Time</span>
+            <h1 class="title-large">Here Are Your<br>6 Choices</h1>
+            <p class="subtitle">Swipe or tap right to check out the 6 options, compare them, and cast your vote!</p>
+          </div>
+          <div class="visual-card">
+            <div class="hero-icon">📱✨</div>
+            <div class="highlight-box">Tap right to start explore →</div>
+          </div>
+          <div class="slide-footer">
+            <span>Teen Phone Edition</span>
+            <span>Tap right to start</span>
+          </div>
+        </div>
+      `;
+
+      // 2. Build 2 Slides per Choice (12 slides total)
+      CHOICES.forEach((c, idx) => {
+        // Slide A: Pitch
+        slidesHTML += `
+          <div class="slide">
+            <div>
+              <span class="badge">${c.slide1.badge}</span>
+              <h2 class="title-option">${c.slide1.headline}</h2>
+              <p class="subtitle">${c.slide1.subtitle}</p>
+            </div>
+            <div class="visual-card">
+              <div class="hero-icon">${c.icon}</div>
+              <div class="highlight-box">${c.slide1.highlight}</div>
+            </div>
+            <div class="slide-footer">
+              <span>${c.tag}</span>
+              <span>Tap for perks →</span>
+            </div>
+          </div>
+        `;
+
+        // Slide B: Perks
+        const pointsHTML = c.slide2.points.map(p => `
+          <li class="feature-item">
+            <span class="feature-icon">${p.icon}</span>
+            <span>${p.text}</span>
+          </li>
+        `).join('');
+
+        slidesHTML += `
+          <div class="slide">
+            <div>
+              <span class="badge">${c.slide2.badge}</span>
+              <h2 class="title-option">${c.slide2.headline}</h2>
+            </div>
+            <div class="visual-card" style="justify-content: flex-start;">
+              <ul class="feature-list" style="margin-top: 10px;">
+                ${pointsHTML}
+              </ul>
+            </div>
+            <div class="slide-footer">
+              <span>Next choice next →</span>
+              <span>Slide 2/2</span>
+            </div>
+          </div>
+        `;
+      });
+
+      // 3. Summary Slide
+      const summaryCardsHTML = CHOICES.map(c => `
+        <div class="summary-card">
+          <div class="summary-icon">${c.icon}</div>
+          <div class="summary-title">${c.title}</div>
+          <div class="summary-tag">${c.tag}</div>
+        </div>
+      `).join('');
+
+      slidesHTML += `
+        <div class="slide">
+          <div>
+            <span class="badge">📊 All 6 Choices</span>
+            <h2 class="title-option">Summary Grid</h2>
+            <p class="subtitle">Here are all 6 options side-by-side before you vote.</p>
+          </div>
+          <div class="summary-grid">
+            ${summaryCardsHTML}
+          </div>
+          <div class="slide-footer">
+            <span>Review options</span>
+            <span>Tap to vote →</span>
+          </div>
+        </div>
+      `;
+
+      // 4. Voting Slide
+      slidesHTML += `
+        <div class="slide">
+          <div>
+            <span class="badge">🗳️ Final Step</span>
+            <h2 class="title-option">Cast Your Vote</h2>
+            <p class="subtitle">Pick your favorite option out of the 6 choices!</p>
+          </div>
+          <div class="vote-options" id="voteOptions"></div>
+          <div>
+            <button class="submit-vote-btn" onclick="submitVote()">Submit Vote 🎉</button>
+          </div>
+          <div class="slide-footer">
+            <span>Instant Tally</span>
+            <span>Final Slide</span>
+          </div>
+        </div>
+      `;
+
+      wrapper.innerHTML = slidesHTML;
+      totalSlides = document.querySelectorAll('.slide').length;
+
+      // Build Progress Segments
+      let progressHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        progressHTML += `
+          <div class="progress-segment" id="prog-${i}">
+            <div class="progress-fill"></div>
+          </div>
+        `;
+      }
+      progress.innerHTML = progressHTML;
+
+      renderVotingOptions();
+      updateSlide();
+    }
+
+    function renderVotingOptions() {
+      const voteContainer = document.getElementById('voteOptions');
+      if (!voteContainer) return;
+
+      voteContainer.innerHTML = CHOICES.map(c => {
+        const count = votes[c.id] || 0;
+        const isSelected = selectedVote === c.id ? 'selected' : '';
+        return `
+          <div class="vote-btn ${isSelected}" onclick="selectVote('${c.id}')">
+            <span>${c.icon} ${c.title}</span>
+            <span class="vote-count">${count} votes</span>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectVote(id) {
+      selectedVote = id;
+      renderVotingOptions();
+    }
+
+    function submitVote() {
+      if (!selectedVote) {
+        alert("Please tap one of the 6 choices to select your vote first!");
+        return;
+      }
+
+      votes[selectedVote] = (votes[selectedVote] || 0) + 1;
+      localStorage.setItem('teen_votes', JSON.stringify(votes));
+      renderVotingOptions();
+
+      const selectedChoiceObj = CHOICES.find(c => c.id === selectedVote);
+      alert(`🎉 Vote Recorded!\nYou voted for: ${selectedChoiceObj.title}`);
+    }
+
+    function updateSlide() {
+      const wrapper = document.getElementById('slidesWrapper');
+      wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+
+      for (let i = 0; i < totalSlides; i++) {
+        const seg = document.getElementById(`prog-${i}`);
+        if (!seg) continue;
+        if (i < currentSlide) {
+          seg.className = 'progress-segment completed';
+        } else if (i === currentSlide) {
+          seg.className = 'progress-segment active';
+        } else {
+          seg.className = 'progress-segment';
+        }
+      }
+    }
+
+    function nextSlide() {
+      if (currentSlide < totalSlides - 1) {
+        currentSlide++;
+        updateSlide();
+      }
+    }
+
+    function prevSlide() {
+      if (currentSlide > 0) {
+        currentSlide--;
+        updateSlide();
+      }
+    }
+
+    // Touch Swipe Gesture Support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    document.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    document.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 40) nextSlide();
+      if (touchEndX > touchStartX + 40) prevSlide();
+    }
+
+    // Keyboard Navigation Support
+    document.addEventListener('keydown', e => {
+      if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
+      if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // Start App
+    init();
+  </script>
+</body>
+</html>
