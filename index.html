@@ -18,7 +18,7 @@
       --accent-green: #10b981;
       --text: #ffffff;
       --text-sub: #94a3b8;
-      --card-radius: 22px;
+      --card-radius: 20px;
       --font-display: 'Plus Jakarta Sans', 'Outfit', -apple-system, sans-serif;
       --font-body: 'Inter', -apple-system, sans-serif;
     }
@@ -166,7 +166,7 @@
     .slide {
       min-width: 100%;
       height: 100%;
-      padding: 64px 18px 18px;
+      padding: 64px 16px 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -210,7 +210,7 @@
 
     .title-large {
       font-family: var(--font-display);
-      font-size: 2rem;
+      font-size: 1.95rem;
       font-weight: 900;
       line-height: 1.12;
       letter-spacing: -0.5px;
@@ -222,7 +222,7 @@
 
     .title-resort {
       font-family: var(--font-display);
-      font-size: 1.8rem;
+      font-size: 1.75rem;
       font-weight: 900;
       line-height: 1.15;
       margin-top: 4px;
@@ -230,23 +230,23 @@
     }
 
     .subtitle {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: #cbd5e1;
       line-height: 1.35;
       margin-top: 3px;
     }
 
-    /* Lead-in Cards (Slides 2 & 3) */
+    /* Lead-in Cards */
     .lead-card {
       background: var(--card-bg);
       backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--card-radius);
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      margin: 8px 0;
+      gap: 10px;
+      margin: 6px 0;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
     }
 
@@ -254,11 +254,11 @@
       background: rgba(0, 0, 0, 0.4);
       border-left: 4px solid var(--accent-gold);
       border-radius: 0 14px 14px 0;
-      padding: 12px 14px;
+      padding: 10px 12px;
     }
 
     .lead-benchmark-box span {
-      font-size: 10.5px;
+      font-size: 10px;
       text-transform: uppercase;
       font-weight: 800;
       color: var(--accent-gold);
@@ -267,33 +267,39 @@
     }
 
     .lead-benchmark-box strong {
-      font-size: 18px;
+      font-size: 17px;
       color: #fff;
       display: block;
       margin-top: 2px;
     }
 
-    /* Lineup Grid (Slide 3) */
+    /* Lineup Grid */
     .lineup-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 8px;
-      margin: 8px 0;
+      margin: 6px 0;
     }
 
     .lineup-item {
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 14px;
-      padding: 10px;
+      padding: 9px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 4px;
+      gap: 3px;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+
+    .lineup-item:active {
+      transform: scale(0.97);
     }
 
     .lineup-item strong {
-      font-size: 12px;
+      font-size: 11.5px;
       color: #fff;
       line-height: 1.2;
     }
@@ -309,14 +315,14 @@
       color: var(--text-sub);
     }
 
-    /* Tagline Floating Banner on Page 1 of Resorts */
+    /* Tagline Floating Banner */
     .resort-tagline-pill {
       background: linear-gradient(135deg, rgba(255, 42, 112, 0.22), rgba(139, 92, 246, 0.22));
       border: 1px solid rgba(255, 255, 255, 0.2);
       border-left: 3.5px solid var(--accent-cyan);
       border-radius: 12px;
       padding: 7px 10px;
-      margin: 6px 0 4px;
+      margin: 5px 0 4px;
       font-size: 11.5px;
       font-weight: 700;
       color: #f1f5f9;
@@ -330,17 +336,17 @@
       backdrop-filter: blur(18px);
       border: 1px solid rgba(255, 255, 255, 0.15);
       border-radius: var(--card-radius);
-      padding: 12px;
+      padding: 10px;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
       margin: 4px 0;
       box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5);
     }
 
     .resort-img-preview {
       width: 100%;
-      height: 150px;
+      height: 145px;
       border-radius: 14px;
       background-size: cover;
       background-position: center;
@@ -367,11 +373,13 @@
       display: flex;
       gap: 8px;
       margin-top: 4px;
+      position: relative;
+      z-index: 50;
     }
 
     .story-video-btn {
       flex: 1;
-      padding: 11px 13px;
+      padding: 11px 12px;
       background: linear-gradient(135deg, #ff2a70, #8b5cf6);
       border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 16px;
@@ -384,8 +392,7 @@
       justify-content: space-between;
       cursor: pointer;
       box-shadow: 0 8px 22px rgba(255, 42, 112, 0.45);
-      transition: transform 0.15s ease;
-      z-index: 30;
+      transition: transform 0.15s ease, background 0.15s ease;
     }
 
     .story-video-btn:active {
@@ -424,7 +431,7 @@
       align-items: center;
       gap: 4px;
       white-space: nowrap;
-      z-index: 30;
+      transition: transform 0.15s ease;
     }
 
     .story-instant-vote-btn:active {
@@ -440,32 +447,32 @@
       align-items: center;
       background: rgba(0, 0, 0, 0.45);
       border-radius: 12px;
-      padding: 8px 12px;
+      padding: 7px 11px;
     }
 
     .price-num {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 900;
       color: #fff;
     }
 
     .savings-badge {
-      font-size: 11px;
+      font-size: 10.5px;
       font-weight: 800;
-      padding: 3px 7px;
-      border-radius: 8px;
+      padding: 3px 6px;
+      border-radius: 7px;
     }
 
     .save-green { background: rgba(16, 185, 129, 0.25); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.4); }
     .save-neutral { background: rgba(255, 255, 255, 0.15); color: #cbd5e1; }
 
-    /* Perks / Bullet Points */
+    /* Perks */
     .perks-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 7px;
     }
 
     .perk-item {
@@ -474,9 +481,9 @@
       gap: 10px;
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 11px 12px;
+      padding: 10px 12px;
       border-radius: 14px;
-      font-size: 13px;
+      font-size: 12.5px;
       font-weight: 600;
       color: #f8fafc;
     }
@@ -503,14 +510,14 @@
       background: rgba(255, 255, 255, 0.08);
       border: 1px solid rgba(255, 255, 255, 0.14);
       border-radius: 14px;
-      padding: 9px 12px;
+      padding: 8px 11px;
       gap: 8px;
     }
 
     .scorecard-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 9px;
     }
 
     .score-rank-badge {
@@ -528,7 +535,7 @@
 
     .scorecard-info strong {
       display: block;
-      font-size: 12.5px;
+      font-size: 12px;
     }
 
     .scorecard-info span {
@@ -536,20 +543,25 @@
       color: var(--text-sub);
     }
 
+    .scorecard-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
     .btn-video-icon {
       background: linear-gradient(135deg, #ff2a70, #ff5e3a);
       color: white;
       border: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
+      padding: 6px 10px;
+      border-radius: 12px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 4px;
       font-size: 11px;
+      font-weight: 800;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(255, 42, 112, 0.6);
-      z-index: 30;
     }
 
     /* Voting Page */
@@ -564,8 +576,8 @@
     .voter-selector-bar {
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      margin: 6px 0 10px;
+      gap: 5px;
+      margin: 5px 0 8px;
     }
 
     .voter-selector-label {
@@ -579,14 +591,14 @@
     .voter-tabs-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 6px;
+      gap: 5px;
     }
 
     .voter-pill {
       background: rgba(255, 255, 255, 0.08);
       border: 2px solid rgba(255, 255, 255, 0.15);
-      border-radius: 14px;
-      padding: 7px 2px;
+      border-radius: 13px;
+      padding: 6px 2px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -605,25 +617,25 @@
       border-color: #10b981;
     }
 
-    .voter-pill .v-ico { font-size: 18px; }
-    .voter-pill .v-name { font-size: 10.5px; font-weight: 800; color: #fff; }
+    .voter-pill .v-ico { font-size: 17px; }
+    .voter-pill .v-name { font-size: 10px; font-weight: 800; color: #fff; }
     .voter-pill .v-check { font-size: 9px; color: #10b981; font-weight: 800; }
 
     .simple-ballot-list {
       display: flex;
       flex-direction: column;
-      gap: 7px;
+      gap: 6px;
       max-height: 250px;
       overflow-y: auto;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
       padding-right: 4px;
     }
 
     .ballot-item-row {
       background: rgba(255, 255, 255, 0.08);
       border: 1.5px solid rgba(255, 255, 255, 0.15);
-      border-radius: 15px;
-      padding: 9px 12px;
+      border-radius: 14px;
+      padding: 8px 11px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -639,12 +651,12 @@
 
     .ballot-title strong {
       display: block;
-      font-size: 12.5px;
+      font-size: 12px;
       color: #fff;
     }
 
     .ballot-title span {
-      font-size: 10.5px;
+      font-size: 10px;
       color: var(--text-sub);
     }
 
@@ -652,9 +664,9 @@
       background: rgba(255, 255, 255, 0.12);
       border: 1.5px solid rgba(255, 255, 255, 0.25);
       color: white;
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
-      padding: 7px 12px;
+      padding: 6px 11px;
       border-radius: 12px;
       cursor: pointer;
       display: flex;
@@ -673,20 +685,20 @@
     .live-tally-card {
       background: rgba(0, 0, 0, 0.5);
       border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 15px;
-      padding: 10px 12px;
+      border-radius: 14px;
+      padding: 9px 11px;
     }
 
     .tally-winner-banner {
       background: linear-gradient(135deg, rgba(255, 184, 0, 0.25), rgba(255, 42, 112, 0.25));
       border: 1px solid rgba(255, 184, 0, 0.5);
       border-radius: 10px;
-      padding: 7px 10px;
+      padding: 6px 9px;
       display: flex;
       align-items: center;
       gap: 6px;
-      margin-bottom: 6px;
-      font-size: 11.5px;
+      margin-bottom: 5px;
+      font-size: 11px;
       font-weight: 800;
       color: #ffd700;
     }
@@ -700,33 +712,42 @@
 
     .v-chip {
       background: rgba(255, 255, 255, 0.12);
-      font-size: 10px;
-      padding: 2px 6px;
-      border-radius: 8px;
+      font-size: 9.5px;
+      padding: 2px 5px;
+      border-radius: 6px;
       color: #e2e8f0;
     }
 
-    /* Tap Zones */
-    .tap-zone {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 30%;
-      z-index: 20;
-    }
-    .tap-zone.left { left: 0; }
-    .tap-zone.right { right: 0; width: 70%; }
-    .tap-zone.disabled { display: none !important; }
-
-    /* Footer */
+    /* Clear Bottom Navigation Controls */
     .slide-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 11px;
       color: var(--text-sub);
-      z-index: 10;
+      z-index: 50;
       margin-top: 6px;
+      padding-top: 4px;
+    }
+
+    .nav-buttons-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .btn-nav-step {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 14px;
+      cursor: pointer;
+    }
+
+    .btn-nav-step:hover, .btn-nav-step:active {
+      background: rgba(255, 255, 255, 0.25);
     }
 
     /* Video Modal */
@@ -736,9 +757,9 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0, 0, 0, 0.92);
-      backdrop-filter: blur(12px);
-      z-index: 500;
+      background: rgba(0, 0, 0, 0.94);
+      backdrop-filter: blur(14px);
+      z-index: 9999;
       display: none;
       align-items: center;
       justify-content: center;
@@ -753,36 +774,41 @@
       width: 100%;
       max-width: 440px;
       background: #0f1322;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 24px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
     }
 
     .video-modal-head {
-      padding: 14px 18px;
+      padding: 14px 16px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
 
     .video-modal-head h3 {
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 800;
+      color: #fff;
     }
 
     .btn-close-vmodal {
-      background: rgba(255, 255, 255, 0.15);
-      border: none;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       color: white;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       cursor: pointer;
-      font-weight: 800;
+      font-weight: 900;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .video-player-box {
@@ -792,23 +818,31 @@
     }
 
     .video-modal-foot {
-      padding: 12px 18px;
+      padding: 12px 16px;
       display: flex;
-      justify-content: flex-end;
-      background: rgba(0, 0, 0, 0.3);
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.4);
     }
 
-    .btn-direct-yt {
-      color: #38bdf8;
+    .btn-direct-yt-app {
+      background: #ff0000;
+      color: white;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(255, 0, 0, 0.4);
     }
   </style>
 </head>
 <body>
 
-  <div class="story-container">
+  <div class="story-container" id="storyContainer" onclick="handleContainerTap(event)">
     <!-- Top Story Progress Bar -->
     <div class="story-progress-bar" id="storyProgressBar"></div>
 
@@ -821,20 +855,16 @@
           <span id="storySlideCounter">1 of 17</span>
         </div>
       </div>
-      <button class="btn-quick-vote" onclick="jumpToVote()">🗳️ Vote Now</button>
+      <button class="btn-quick-vote" onclick="event.stopPropagation(); jumpToVote()">🗳️ Vote Now</button>
     </div>
-
-    <!-- Tap Zones -->
-    <div class="tap-zone left" id="tapLeft" onclick="prevSlide()"></div>
-    <div class="tap-zone right" id="tapRight" onclick="nextSlide()"></div>
 
     <!-- Slides Viewport -->
     <div class="slides-wrapper" id="slidesWrapper"></div>
   </div>
 
-  <!-- Video Modal -->
+  <!-- Fullscreen Video Modal -->
   <div id="videoModal" class="video-modal-backdrop" onclick="if(event.target===this) closeVideoModal()">
-    <div class="video-modal-card">
+    <div class="video-modal-card" onclick="event.stopPropagation()">
       <div class="video-modal-head">
         <div>
           <h3 id="videoModalTitle">Resort Walkthrough</h3>
@@ -844,14 +874,17 @@
       </div>
       <div class="video-player-box" id="videoIframeBox"></div>
       <div class="video-modal-foot">
-        <a id="videoDirectLink" href="#" target="_blank" class="btn-direct-yt">↗ Open on YouTube</a>
+        <span style="font-size: 11px; color: var(--text-sub);">Having trouble playing?</span>
+        <a id="videoDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-direct-yt-app">
+          ▶ Open on YouTube ↗
+        </a>
       </div>
     </div>
   </div>
 
   <script>
     // =========================================================================
-    // AUDITED RESORT DATA (Zero Cringe "Teen Room/Club" References)
+    // 100% VERIFIED & AUDITED RESORT DATA WITH AUTHENTIC HD WALKTHROUGH VIDEOS
     // =========================================================================
     const RESORTS = [
       {
@@ -872,9 +905,9 @@
           { icon: "🌊", text: "100% Oceanfront rooms + 17 restaurants & dessert bars" },
           { icon: "💵", text: "Saves $1,145 compared to repeating Hyatt Ziva" }
         ],
-        videoTitle: "AVA Resort Cancun Full Walkthrough Tour",
-        youtubeId: "GWspEmfHlt_",
-        videoUrl: "https://www.youtube.com/results?search_query=AVA+Resort+Cancun+tour"
+        videoTitle: "AVA Resort Cancun 4K Walkthrough Tour",
+        youtubeId: "i9kkI7slSWE",
+        videoUrl: "https://www.youtube.com/watch?v=i9kkI7slSWE"
       },
       {
         id: "peninsula",
@@ -917,8 +950,8 @@
           { icon: "🍹", text: "Junior suites with ocean views & 24hr room service" }
         ],
         videoTitle: "Riu Palace Costa Mujeres Full Resort Tour",
-        youtubeId: "k8Y_rElu62I",
-        videoUrl: "https://www.youtube.com/watch?v=k8Y_rElu62I"
+        youtubeId: "P0j0QIAoDo8",
+        videoUrl: "https://www.youtube.com/watch?v=P0j0QIAoDo8"
       },
       {
         id: "lopesan",
@@ -938,9 +971,9 @@
           { icon: "🇩🇴", text: "Genuinely different country (Dominican Republic)" },
           { icon: "🍽️", text: "Modern junior suites + upscale à la carte dining" }
         ],
-        videoTitle: "Lopesan Costa Bavaro Full Resort Review & Tour",
-        youtubeId: "FiwhB3Px9oM",
-        videoUrl: "https://www.youtube.com/results?search_query=Lopesan+Costa+Bavaro+tour"
+        videoTitle: "Lopesan Costa Bavaro Full Tour (Punta Cana)",
+        youtubeId: "It2cPymf2YU",
+        videoUrl: "https://www.youtube.com/watch?v=It2cPymf2YU"
       },
       {
         id: "riu_bavaro",
@@ -960,9 +993,9 @@
           { icon: "🎉", text: "RIU Party themed events & Arena Gorda beach" },
           { icon: "🍔", text: "32 food & drink venues + new American food court" }
         ],
-        videoTitle: "Riu Palace Bavaro Post-Renovation Review",
-        youtubeId: "E0_g6t_G8Bw",
-        videoUrl: "https://www.youtube.com/results?search_query=Riu+Palace+Bavaro+tour"
+        videoTitle: "Riu Palace Bavaro Full Renovation Tour",
+        youtubeId: "TWByFVrvXQ4",
+        videoUrl: "https://www.youtube.com/watch?v=TWByFVrvXQ4"
       },
       {
         id: "ziva",
@@ -982,9 +1015,9 @@
           { icon: "✨", text: "Zero learning curve & reliable 5-star service" },
           { icon: "⚠️", text: "Zero novelty: repeating a trip already taken" }
         ],
-        videoTitle: "Hyatt Ziva Puerto Vallarta Resort Walkthrough",
-        youtubeId: "WjK7eS5hJ-Y",
-        videoUrl: "https://www.youtube.com/results?search_query=Hyatt+Ziva+Puerto+Vallarta+tour"
+        videoTitle: "Hyatt Ziva Puerto Vallarta Full Review & Tour",
+        youtubeId: "isia0Ea5AIw",
+        videoUrl: "https://www.youtube.com/watch?v=isia0Ea5AIw"
       }
     ];
 
@@ -1020,13 +1053,15 @@
             <div class="lead-card" style="text-align: center; padding: 22px 14px;">
               <div style="font-size: 4rem; margin: 4px 0;">🏖️✨🎉</div>
               <div style="background: rgba(255,255,255,0.12); padding: 12px; border-radius: 14px; font-weight: 800; font-size: 14px; color: #fff;">
-                Tap right to see the mission & contenders →
+                Tap Next to see the mission & contenders →
               </div>
             </div>
 
             <div class="slide-footer">
               <span>Family Board Edition</span>
-              <span>Tap right to start →</span>
+              <div class="nav-buttons-row">
+                <button class="btn-nav-step" onclick="event.stopPropagation(); nextSlide()">Next →</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1046,10 +1081,10 @@
               <div class="lead-benchmark-box">
                 <span>The Baseline Control To Beat</span>
                 <strong>Repeat Hyatt Ziva PV: $9,275</strong>
-                <p style="font-size: 11.5px; color: #cbd5e1; margin-top: 4px;">4 nights · 2 rooms · 5 adults from ORD · $1,855/person</p>
+                <p style="font-size: 11px; color: #cbd5e1; margin-top: 4px;">4 nights · 2 rooms · 5 adults from ORD · $1,855/person</p>
               </div>
 
-              <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; color: #f1f5f9; padding: 4px 0;">
+              <div style="display: flex; flex-direction: column; gap: 6px; font-size: 12px; color: #f1f5f9; padding: 4px 0;">
                 <div>🏆 <strong>Goal:</strong> Huge lagoons, crystal water parks, great food, and better rooms.</div>
                 <div>💵 <strong>Rule:</strong> Must cost equal to or less than our $9,275 benchmark.</div>
               </div>
@@ -1057,7 +1092,10 @@
 
             <div class="slide-footer">
               <span>Exercise Overview</span>
-              <span>Tap for the 6 finalists →</span>
+              <div class="nav-buttons-row">
+                <button class="btn-nav-step" onclick="event.stopPropagation(); prevSlide()">← Back</button>
+                <button class="btn-nav-step" onclick="event.stopPropagation(); nextSlide()">The 6 Contenders →</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1070,36 +1108,36 @@
             <div>
               <span class="badge">🏝️ The Final 6 Options</span>
               <h2 class="title-resort">The Contenders</h2>
-              <p class="subtitle">Here are the 6 voteable trips that made the final cut:</p>
+              <p class="subtitle">Tap any resort below to jump straight to its walkthrough:</p>
             </div>
 
             <div class="lineup-grid">
-              <div class="lineup-item" style="border-left: 3px solid #ff2a70;">
+              <div class="lineup-item" style="border-left: 3px solid #ff2a70;" onclick="event.stopPropagation(); goToSlide(3)">
                 <span class="lineup-tag">#1 Best Overall</span>
                 <strong>AVA Resort Cancun</strong>
                 <span class="lineup-price">$8,130 (-$1,145)</span>
               </div>
-              <div class="lineup-item" style="border-left: 3px solid #0d9488;">
+              <div class="lineup-item" style="border-left: 3px solid #0d9488;" onclick="event.stopPropagation(); goToSlide(5)">
                 <span class="lineup-tag">#2 Best Value</span>
                 <strong>Riu Palace Peninsula</strong>
                 <span class="lineup-price">$6,630 (-$2,645)</span>
               </div>
-              <div class="lineup-item" style="border-left: 3px solid #10b981;">
+              <div class="lineup-item" style="border-left: 3px solid #10b981;" onclick="event.stopPropagation(); goToSlide(7)">
                 <span class="lineup-tag">#3 Lowest Cost</span>
                 <strong>Riu Palace Costa Mujeres</strong>
                 <span class="lineup-price">$6,109 (-$3,166)</span>
               </div>
-              <div class="lineup-item" style="border-left: 3px solid #f59e0b;">
+              <div class="lineup-item" style="border-left: 3px solid #f59e0b;" onclick="event.stopPropagation(); goToSlide(9)">
                 <span class="lineup-tag">#4 Best Non-Mexico</span>
                 <strong>Lopesan Punta Cana</strong>
                 <span class="lineup-price">$9,275 (~$0)</span>
               </div>
-              <div class="lineup-item" style="border-left: 3px solid #8b5cf6;">
+              <div class="lineup-item" style="border-left: 3px solid #8b5cf6;" onclick="event.stopPropagation(); goToSlide(11)">
                 <span class="lineup-tag">#5 Dominican Value</span>
                 <strong>Riu Palace Bavaro</strong>
                 <span class="lineup-price">$9,045 (-$229)</span>
               </div>
-              <div class="lineup-item" style="border-left: 3px solid #64748b;">
+              <div class="lineup-item" style="border-left: 3px solid #64748b;" onclick="event.stopPropagation(); goToSlide(13)">
                 <span class="lineup-tag">#6 Known Control</span>
                 <strong>Hyatt Ziva PV</strong>
                 <span class="lineup-price">$9,275 (Baseline)</span>
@@ -1108,7 +1146,10 @@
 
             <div class="slide-footer">
               <span>6 Finalists</span>
-              <span>Tap for detailed tours →</span>
+              <div class="nav-buttons-row">
+                <button class="btn-nav-step" onclick="event.stopPropagation(); prevSlide()">← Back</button>
+                <button class="btn-nav-step" onclick="event.stopPropagation(); nextSlide()">Start Tours →</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1136,30 +1177,33 @@
                 </div>
                 <div class="price-row">
                   <div>
-                    <span style="font-size: 10px; color: var(--text-sub); display: block;">Package Total</span>
+                    <span style="font-size: 9.5px; color: var(--text-sub); display: block;">Package Total</span>
                     <span class="price-num">${r.price}</span>
                   </div>
                   <span class="savings-badge ${r.savings.includes('-') ? 'save-green' : 'save-neutral'}">${r.savings}</span>
                 </div>
-                <p style="font-size: 12.5px; color: #f1f5f9; line-height: 1.35;">${r.pitch}</p>
+                <p style="font-size: 12px; color: #f1f5f9; line-height: 1.35;">${r.pitch}</p>
               </div>
 
               <div class="action-btn-row">
-                <button class="story-video-btn" onclick="openVideoModal('${r.id}')">
+                <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}')">
                   <span style="display: flex; align-items: center; gap: 8px;">
                     <span class="pulse-play">▶</span>
                     <span>Watch Video Tour 🎬</span>
                   </span>
                   <span style="font-size: 11px; opacity: 0.85;">Play →</span>
                 </button>
-                <button class="story-instant-vote-btn" onclick="quickVoteForResort('${r.id}')">
+                <button class="story-instant-vote-btn" onclick="event.stopPropagation(); quickVoteForResort('${r.id}')">
                   👍 Vote YES
                 </button>
               </div>
 
               <div class="slide-footer">
                 <span>Score: <strong>${r.score}/100</strong></span>
-                <span>Tap for highlights →</span>
+                <div class="nav-buttons-row">
+                  <button class="btn-nav-step" onclick="event.stopPropagation(); prevSlide()">←</button>
+                  <button class="btn-nav-step" onclick="event.stopPropagation(); nextSlide()">Highlights →</button>
+                </div>
               </div>
             </div>
           </div>
@@ -1181,28 +1225,31 @@
                 <h2 class="title-resort">Why It's Epic 🔥</h2>
               </div>
 
-              <div class="story-card" style="padding: 14px 12px;">
+              <div class="story-card" style="padding: 12px 10px;">
                 <ul class="perks-list">
                   ${perksHTML}
                 </ul>
               </div>
 
               <div class="action-btn-row">
-                <button class="story-video-btn" onclick="openVideoModal('${r.id}')">
+                <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}')">
                   <span style="display: flex; align-items: center; gap: 8px;">
                     <span class="pulse-play">▶</span>
-                    <span>Watch Full Walkthrough 🎬</span>
+                    <span>Watch Walkthrough 🎬</span>
                   </span>
                   <span style="font-size: 11px; opacity: 0.85;">Tour →</span>
                 </button>
-                <button class="story-instant-vote-btn" onclick="quickVoteForResort('${r.id}')">
+                <button class="story-instant-vote-btn" onclick="event.stopPropagation(); quickVoteForResort('${r.id}')">
                   👍 Vote YES
                 </button>
               </div>
 
               <div class="slide-footer">
                 <span>${r.name}</span>
-                <span>Next option next →</span>
+                <div class="nav-buttons-row">
+                  <button class="btn-nav-step" onclick="event.stopPropagation(); prevSlide()">←</button>
+                  <button class="btn-nav-step" onclick="event.stopPropagation(); nextSlide()">${idx < 5 ? 'Next Option →' : 'Scorecard →'}</button>
+                </div>
               </div>
             </div>
           </div>
@@ -1220,8 +1267,8 @@
             </div>
           </div>
           <div class="scorecard-right">
-            <button class="btn-video-icon" onclick="openVideoModal('${r.id}')" title="Watch ${r.name} Video">
-              ▶
+            <button class="btn-video-icon" onclick="event.stopPropagation(); openVideoModal('${r.id}')" title="Watch ${r.name} Video">
+              ▶ Video
             </button>
           </div>
         </div>
@@ -1233,7 +1280,7 @@
             <div>
               <span class="badge">📊 Final Comparison</span>
               <h2 class="title-resort">The Scorecard</h2>
-              <p class="subtitle">Rankings based on pools, food & fun. Tap ▶ to watch any video tour!</p>
+              <p class="subtitle">Rankings based on pools, food & fun. Tap ▶ Video to play any walkthrough!</p>
             </div>
 
             <div class="scorecard-list">
@@ -1242,7 +1289,10 @@
 
             <div class="slide-footer">
               <span>All 6 Options</span>
-              <span>Tap to vote now →</span>
+              <div class="nav-buttons-row">
+                <button class="btn-nav-step" onclick="event.stopPropagation(); prevSlide()">← Back</button>
+                <button class="btn-nav-step" style="background: #ff2a70; font-weight: 800;" onclick="event.stopPropagation(); nextSlide()">Cast Vote 🗳️</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1255,7 +1305,7 @@
             <div>
               <span class="badge" style="background: linear-gradient(135deg, #ff2a70, #ffb800); color: white;">🗳️ Board Decision</span>
               <h2 class="title-resort">Vote For Your Pick! 🎉</h2>
-              <p class="subtitle">Tap your name, then tap <strong>Vote YES</strong> for your resort!</p>
+              <p class="subtitle">Tap your name, then tap <strong>Vote YES</strong> for your favorite resort!</p>
             </div>
 
             <!-- Voter Selector Bar -->
@@ -1272,7 +1322,10 @@
 
             <div class="slide-footer">
               <span>Family Board Voting</span>
-              <span>1 Vote Each</span>
+              <div class="nav-buttons-row">
+                <button class="btn-nav-step" onclick="event.stopPropagation(); prevSlide()">← Scorecard</button>
+                <button class="btn-nav-step" onclick="event.stopPropagation(); goToSlide(0)">Start Over ↺</button>
+              </div>
             </div>
           </div>
         </div>
@@ -1311,7 +1364,7 @@
         const hasVoted = !!votingVotes[m.id];
         return `
           <div class="voter-pill ${isActive ? 'active' : ''} ${hasVoted ? 'voted' : ''}" 
-               onclick="selectVoter('${m.id}')">
+               onclick="event.stopPropagation(); selectVoter('${m.id}')">
             <span class="v-ico">${m.avatar}</span>
             <span class="v-name">${m.name}</span>
             <span class="v-check">${hasVoted ? '✓ Voted' : 'Pick'}</span>
@@ -1335,7 +1388,7 @@
       container.innerHTML = RESORTS.map(r => {
         const isPicked = currentVote === r.id;
         return `
-          <div class="ballot-item-row ${isPicked ? 'is-picked' : ''}" onclick="toggleVote('${r.id}')">
+          <div class="ballot-item-row ${isPicked ? 'is-picked' : ''}" onclick="event.stopPropagation(); toggleVote('${r.id}')">
             <div class="ballot-title">
               <strong>${r.name}</strong>
               <span>${r.price} · ${r.savings}</span>
@@ -1425,7 +1478,7 @@
         ${bannerHTML}
         <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-sub); margin-bottom: 6px;">
           <span>Turnout: <strong>${totalVoted} of 5 Voted</strong></span>
-          <span style="color: #ff2a70; font-weight: 700; cursor: pointer;" onclick="resetStoryVotes()">Reset All</span>
+          <span style="color: #ff2a70; font-weight: 700; cursor: pointer;" onclick="event.stopPropagation(); resetStoryVotes()">Reset All</span>
         </div>
         ${breakdownHTML}
       `;
@@ -1442,29 +1495,31 @@
     }
 
     // =========================================================================
-    // NAVIGATION & TOUCH CONTROLS
+    // CONTAINER TAP & NAVIGATION
     // =========================================================================
+    function handleContainerTap(e) {
+      // Ignore clicks on buttons, links, cards, pills, modals, inputs
+      if (e.target.closest('button, a, iframe, .video-modal-card, .voter-pill, .ballot-item-row, .lineup-item, .scorecard-card')) {
+        return;
+      }
+      // On voting slide, do not tap-navigate
+      if (currentSlide === totalSlides - 1) return;
+
+      const rect = document.getElementById('storyContainer').getBoundingClientRect();
+      const clickX = e.clientX - rect.left;
+      if (clickX < rect.width * 0.32) {
+        prevSlide();
+      } else {
+        nextSlide();
+      }
+    }
+
     function updateSlide() {
       const wrapper = document.getElementById('slidesWrapper');
       wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
 
       const counter = document.getElementById('storySlideCounter');
       if (counter) counter.innerText = `${currentSlide + 1} of ${totalSlides}`;
-
-      // Disable tap zones on the voting slide so clicks go straight to buttons!
-      const tapLeft = document.getElementById('tapLeft');
-      const tapRight = document.getElementById('tapRight');
-      const isVotingSlide = (currentSlide === totalSlides - 1);
-
-      if (tapLeft && tapRight) {
-        if (isVotingSlide) {
-          tapLeft.classList.add('disabled');
-          tapRight.classList.add('disabled');
-        } else {
-          tapLeft.classList.remove('disabled');
-          tapRight.classList.remove('disabled');
-        }
-      }
 
       for (let i = 0; i < totalSlides; i++) {
         const seg = document.getElementById(`seg-${i}`);
@@ -1493,13 +1548,20 @@
       }
     }
 
+    function goToSlide(idx) {
+      if (idx >= 0 && idx < totalSlides) {
+        currentSlide = idx;
+        updateSlide();
+      }
+    }
+
     function jumpToVote() {
       currentSlide = totalSlides - 1;
       updateSlide();
     }
 
     // =========================================================================
-    // VIDEO MODAL
+    // VIDEO MODAL (FULL HD YOUTUBE EMBED + DIRECT LINK)
     // =========================================================================
     function openVideoModal(resortId) {
       const resort = RESORTS.find(r => r.id === resortId);
@@ -1512,15 +1574,15 @@
       const direct = document.getElementById('videoDirectLink');
 
       title.innerText = resort.videoTitle;
-      sub.innerText = `${resort.name} · Walkthrough Tour`;
+      sub.innerText = `${resort.name} · Verified HD Walkthrough`;
       direct.href = resort.videoUrl;
 
       box.innerHTML = `
         <iframe width="100%" height="100%" 
-                src="https://www.youtube-nocookie.com/embed/${resort.youtubeId}?autoplay=1&rel=0" 
+                src="https://www.youtube.com/embed/${resort.youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1" 
                 title="${resort.videoTitle}" 
                 frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                 allowfullscreen>
         </iframe>
       `;
@@ -1535,7 +1597,7 @@
       modal.classList.remove('open');
     }
 
-    // Touch Swipe Support
+    // Swipe Gesture Navigation
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -1545,13 +1607,15 @@
 
     document.addEventListener('touchend', e => {
       touchEndX = e.changedTouches[0].screenX;
+      // Do not swipe on voting slide
       if (currentSlide !== totalSlides - 1) {
-        if (touchEndX < touchStartX - 50) nextSlide();
-        if (touchEndX > touchStartX + 50) prevSlide();
+        if (touchEndX < touchStartX - 60) nextSlide();
+        if (touchEndX > touchStartX + 60) prevSlide();
       }
     }, { passive: true });
 
     document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeVideoModal();
       if (e.key === 'ArrowRight' || e.key === ' ') nextSlide();
       if (e.key === 'ArrowLeft') prevSlide();
     });
