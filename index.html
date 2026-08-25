@@ -9,8 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #090b10;
-      --card-bg: rgba(18, 22, 36, 0.82);
+      --bg: #07090e;
+      --card-bg: rgba(18, 22, 36, 0.88);
       --accent-pink: #ff2a70;
       --accent-purple: #8b5cf6;
       --accent-cyan: #00f2fe;
@@ -18,7 +18,7 @@
       --accent-green: #10b981;
       --text: #ffffff;
       --text-sub: #94a3b8;
-      --card-radius: 24px;
+      --card-radius: 22px;
       --font-display: 'Plus Jakarta Sans', 'Outfit', -apple-system, sans-serif;
       --font-body: 'Inter', -apple-system, sans-serif;
     }
@@ -32,7 +32,7 @@
     }
 
     body {
-      background-color: #040508;
+      background-color: #030407;
       color: var(--text);
       font-family: var(--font-body);
       display: flex;
@@ -49,8 +49,8 @@
       width: 100vw;
       height: 100vh;
       height: 100dvh;
-      max-width: 430px;
-      max-height: 900px;
+      max-width: 440px;
+      max-height: 920px;
       background: var(--bg);
       display: flex;
       flex-direction: column;
@@ -58,11 +58,11 @@
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
     }
 
-    @media (min-width: 440px) and (min-height: 680px) {
+    @media (min-width: 450px) and (min-height: 680px) {
       .story-container {
         border-radius: 40px;
         height: 92vh;
-        border: 2px solid rgba(255, 255, 255, 0.12);
+        border: 2px solid rgba(255, 255, 255, 0.15);
       }
     }
 
@@ -79,7 +79,7 @@
 
     .story-seg {
       flex: 1;
-      height: 3px;
+      height: 3.5px;
       background: rgba(255, 255, 255, 0.25);
       border-radius: 2px;
       overflow: hidden;
@@ -142,8 +142,7 @@
     }
 
     .btn-quick-vote {
-      background: rgba(255, 42, 112, 0.85);
-      backdrop-filter: blur(10px);
+      background: linear-gradient(135deg, #ff2a70, #8b5cf6);
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: white;
       font-size: 12px;
@@ -179,7 +178,7 @@
 
     .slide-content {
       position: relative;
-      z-index: 2;
+      z-index: 10;
       display: flex;
       flex-direction: column;
       height: 100%;
@@ -223,7 +222,7 @@
 
     .title-resort {
       font-family: var(--font-display);
-      font-size: 1.95rem;
+      font-size: 1.9rem;
       font-weight: 900;
       line-height: 1.15;
       margin-top: 6px;
@@ -266,7 +265,7 @@
       position: absolute;
       top: 10px;
       left: 10px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(6px);
       color: white;
       font-size: 10px;
@@ -275,16 +274,22 @@
       border-radius: 12px;
     }
 
-    /* Video Banner CTA */
+    /* Buttons Row: Video + Direct Vote */
+    .action-btn-row {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
     .story-video-btn {
-      width: 100%;
-      padding: 13px 16px;
+      flex: 1;
+      padding: 13px 14px;
       background: linear-gradient(135deg, #ff2a70, #8b5cf6);
       border: 1px solid rgba(255, 255, 255, 0.35);
       border-radius: 18px;
       color: white;
       font-family: var(--font-display);
-      font-size: 14.5px;
+      font-size: 14px;
       font-weight: 800;
       display: flex;
       align-items: center;
@@ -292,7 +297,7 @@
       cursor: pointer;
       box-shadow: 0 8px 22px rgba(255, 42, 112, 0.45);
       transition: transform 0.15s ease;
-      z-index: 60;
+      z-index: 30;
     }
 
     .story-video-btn:active {
@@ -300,15 +305,15 @@
     }
 
     .pulse-play {
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: white;
       color: #ff2a70;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       box-shadow: 0 0 10px white;
       animation: pulseAnim 2s infinite ease-in-out;
     }
@@ -318,12 +323,34 @@
       50% { transform: scale(1.12); }
     }
 
+    .story-instant-vote-btn {
+      background: rgba(16, 185, 129, 0.25);
+      border: 1.5px solid #10b981;
+      color: #34d399;
+      padding: 12px 14px;
+      border-radius: 18px;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      z-index: 30;
+    }
+
+    .story-instant-vote-btn:active {
+      transform: scale(0.96);
+      background: #10b981;
+      color: white;
+    }
+
     /* Price & Delta Row */
     .price-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.45);
       border-radius: 14px;
       padding: 10px 14px;
     }
@@ -371,7 +398,7 @@
       flex-shrink: 0;
     }
 
-    /* Summary Matrix & Scorecard Slide */
+    /* Summary Matrix Slide */
     .scorecard-list {
       display: flex;
       flex-direction: column;
@@ -427,12 +454,6 @@
       gap: 8px;
     }
 
-    .score-points {
-      font-size: 13px;
-      font-weight: 800;
-      color: #38bdf8;
-    }
-
     .btn-video-icon {
       background: linear-gradient(135deg, #ff2a70, #ff5e3a);
       color: white;
@@ -446,158 +467,178 @@
       font-size: 12px;
       cursor: pointer;
       box-shadow: 0 0 10px rgba(255, 42, 112, 0.6);
-      z-index: 60;
+      z-index: 30;
     }
 
-    /* Voting Page (Last Slide) */
-    .voter-selector-grid {
+    /* =========================================================================
+       SUPER SIMPLE & BULLETPROOF VOTING PAGE (Slide 15)
+       ========================================================================= */
+    .voting-slide-box {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      z-index: 50;
+    }
+
+    .voter-selector-bar {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 8px 0 12px;
+    }
+
+    .voter-selector-label {
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-sub);
+    }
+
+    .voter-tabs-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 6px;
-      margin-bottom: 10px;
     }
 
-    .voter-btn-story {
+    .voter-pill {
       background: rgba(255, 255, 255, 0.08);
-      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border: 2px solid rgba(255, 255, 255, 0.15);
       border-radius: 14px;
-      padding: 6px 2px;
+      padding: 8px 2px;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 2px;
       cursor: pointer;
       transition: all 0.15s ease;
-      z-index: 60;
     }
 
-    .voter-btn-story.active {
+    .voter-pill.active {
       border-color: #00f2fe;
-      background: rgba(0, 242, 254, 0.18);
-      box-shadow: 0 0 10px rgba(0, 242, 254, 0.4);
+      background: rgba(0, 242, 254, 0.2);
+      box-shadow: 0 0 12px rgba(0, 242, 254, 0.5);
     }
 
-    .voter-btn-story.has-voted {
+    .voter-pill.voted {
       border-color: #10b981;
     }
 
-    .voter-btn-story span.voter-ico { font-size: 18px; }
-    .voter-btn-story span.voter-name { font-size: 10px; font-weight: 700; }
-    .voter-btn-story span.voter-check { font-size: 9px; color: #10b981; font-weight: 800; }
+    .voter-pill .v-ico { font-size: 20px; }
+    .voter-pill .v-name { font-size: 11px; font-weight: 800; color: #fff; }
+    .voter-pill .v-check { font-size: 9px; color: #10b981; font-weight: 800; }
 
-    .story-vote-cards {
+    /* Simple Yes/No Ballot Grid */
+    .simple-ballot-list {
       display: flex;
       flex-direction: column;
-      gap: 7px;
-      max-height: 250px;
+      gap: 8px;
+      max-height: 270px;
       overflow-y: auto;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      padding-right: 4px;
     }
 
-    .story-vote-card {
+    .ballot-item-row {
       background: rgba(255, 255, 255, 0.08);
-      border: 2px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
+      border: 1.5px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
       padding: 10px 14px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
+      gap: 8px;
       transition: all 0.15s ease;
-      z-index: 60;
     }
 
-    .story-vote-card.selected {
-      border-color: #ff2a70;
-      background: linear-gradient(135deg, rgba(255, 42, 112, 0.25), rgba(139, 92, 246, 0.25));
-      box-shadow: 0 0 14px rgba(255, 42, 112, 0.4);
+    .ballot-item-row.is-picked {
+      border-color: #10b981;
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(0, 242, 254, 0.2));
+      box-shadow: 0 0 14px rgba(16, 185, 129, 0.4);
     }
 
-    .vote-card-title {
+    .ballot-title strong {
+      display: block;
       font-size: 13px;
-      font-weight: 800;
+      color: #fff;
     }
 
-    .vote-card-sub {
+    .ballot-title span {
       font-size: 11px;
       color: var(--text-sub);
     }
 
-    .story-radio-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+    .btn-vote-yes {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 14px;
+      cursor: pointer;
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 4px;
+      transition: all 0.15s ease;
     }
 
-    .story-vote-card.selected .story-radio-dot {
-      border-color: #ff2a70;
-      background: #ff2a70;
-    }
-
-    .story-radio-dot::after {
-      content: '✓';
+    .ballot-item-row.is-picked .btn-vote-yes {
+      background: #10b981;
+      border-color: #10b981;
       color: white;
-      font-size: 11px;
-      font-weight: 900;
-      display: none;
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.6);
     }
 
-    .story-vote-card.selected .story-radio-dot::after {
-      display: block;
-    }
-
-    .btn-submit-story-vote {
-      width: 100%;
-      padding: 14px;
-      border-radius: 18px;
-      border: none;
-      background: linear-gradient(135deg, #ff2a70, #8b5cf6);
-      color: white;
-      font-family: var(--font-display);
-      font-size: 15px;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(255, 42, 112, 0.45);
-      z-index: 60;
-    }
-
-    /* Live Tally Box */
-    .story-tally-box {
-      background: rgba(0, 0, 0, 0.45);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 14px;
-      padding: 10px 12px;
-      margin-top: 10px;
+    /* Live Tally Scoreboard */
+    .live-tally-card {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 12px;
     }
 
     .tally-winner-banner {
       background: linear-gradient(135deg, rgba(255, 184, 0, 0.25), rgba(255, 42, 112, 0.25));
       border: 1px solid rgba(255, 184, 0, 0.5);
-      border-radius: 10px;
+      border-radius: 12px;
       padding: 8px 12px;
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 8px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       color: #ffd700;
     }
 
-    /* Tap Zones */
+    .tally-member-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin-top: 2px;
+    }
+
+    .v-chip {
+      background: rgba(255, 255, 255, 0.12);
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 8px;
+      color: #e2e8f0;
+    }
+
+    /* Transparent Tap Navigation Zones (only on slides 0 to 13) */
     .tap-zone {
       position: absolute;
       top: 0;
       bottom: 0;
-      width: 32%;
-      z-index: 40;
+      width: 30%;
+      z-index: 20;
     }
     .tap-zone.left { left: 0; }
-    .tap-zone.right { right: 0; width: 68%; }
+    .tap-zone.right { right: 0; width: 70%; }
+    .tap-zone.disabled { display: none !important; }
 
     /* Footer */
     .slide-footer {
@@ -610,7 +651,7 @@
       margin-top: 8px;
     }
 
-    /* Fullscreen Video Modal */
+    /* Video Modal */
     .video-modal-backdrop {
       position: fixed;
       top: 0;
@@ -705,11 +746,11 @@
       <button class="btn-quick-vote" onclick="jumpToVote()">🗳️ Vote Now</button>
     </div>
 
-    <!-- Tap Zones -->
-    <div class="tap-zone left" onclick="prevSlide()"></div>
-    <div class="tap-zone right" onclick="nextSlide()"></div>
+    <!-- Tap Zones for Story Navigation -->
+    <div class="tap-zone left" id="tapLeft" onclick="prevSlide()"></div>
+    <div class="tap-zone right" id="tapRight" onclick="nextSlide()"></div>
 
-    <!-- Slides Wrapper -->
+    <!-- Slides Viewport -->
     <div class="slides-wrapper" id="slidesWrapper"></div>
   </div>
 
@@ -907,7 +948,7 @@
         </div>
       `;
 
-      // 2. RESORT SLIDES (2 slides per resort)
+      // 2. RESORT SLIDES (2 slides per resort = 12 slides)
       RESORTS.forEach((r, idx) => {
         // Page 1 of Option: Vibe & Video
         slidesHTML += `
@@ -933,13 +974,18 @@
                 <p style="font-size: 13px; color: #f1f5f9; line-height: 1.35;">${r.pitch}</p>
               </div>
 
-              <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}')">
-                <span style="display: flex; align-items: center; gap: 8px;">
-                  <span class="pulse-play">▶</span>
-                  <span>Watch Video Tour 🎬</span>
-                </span>
-                <span style="font-size: 11px; opacity: 0.85;">Tap to play →</span>
-              </button>
+              <div class="action-btn-row">
+                <button class="story-video-btn" onclick="openVideoModal('${r.id}')">
+                  <span style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pulse-play">▶</span>
+                    <span>Watch Video Tour 🎬</span>
+                  </span>
+                  <span style="font-size: 11px; opacity: 0.85;">Play →</span>
+                </button>
+                <button class="story-instant-vote-btn" onclick="quickVoteForResort('${r.id}')">
+                  👍 Vote YES
+                </button>
+              </div>
 
               <div class="slide-footer">
                 <span>Score: <strong>${r.score}/100</strong></span>
@@ -971,13 +1017,18 @@
                 </ul>
               </div>
 
-              <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}')">
-                <span style="display: flex; align-items: center; gap: 8px;">
-                  <span class="pulse-play">▶</span>
-                  <span>Watch Full Walkthrough 🎬</span>
-                </span>
-                <span style="font-size: 11px; opacity: 0.85;">Tour & Review →</span>
-              </button>
+              <div class="action-btn-row">
+                <button class="story-video-btn" onclick="openVideoModal('${r.id}')">
+                  <span style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pulse-play">▶</span>
+                    <span>Watch Full Walkthrough 🎬</span>
+                  </span>
+                  <span style="font-size: 11px; opacity: 0.85;">Tour →</span>
+                </button>
+                <button class="story-instant-vote-btn" onclick="quickVoteForResort('${r.id}')">
+                  👍 Vote YES
+                </button>
+              </div>
 
               <div class="slide-footer">
                 <span>${r.name}</span>
@@ -999,8 +1050,7 @@
             </div>
           </div>
           <div class="scorecard-right">
-            <span class="score-points">${r.score}</span>
-            <button class="btn-video-icon" onclick="event.stopPropagation(); openVideoModal('${r.id}')" title="Watch ${r.name} Video">
+            <button class="btn-video-icon" onclick="openVideoModal('${r.id}')" title="Watch ${r.name} Video">
               ▶
             </button>
           </div>
@@ -1028,21 +1078,27 @@
         </div>
       `;
 
-      // 4. VOTING SLIDE
+      // 4. VOTING SLIDE (Slide 15)
       slidesHTML += `
-        <div class="slide" style="background: radial-gradient(circle at top right, rgba(255,42,112,0.4), transparent 60%), radial-gradient(circle at bottom left, rgba(139,92,246,0.45), transparent 60%);">
-          <div class="slide-content">
+        <div class="slide" id="votingSlide" style="background: radial-gradient(circle at top right, rgba(255,42,112,0.4), transparent 60%), radial-gradient(circle at bottom left, rgba(139,92,246,0.45), transparent 60%);">
+          <div class="slide-content voting-slide-box">
             <div>
               <span class="badge" style="background: linear-gradient(135deg, #ff2a70, #ffb800); color: white;">🗳️ Board Decision</span>
-              <h2 class="title-resort">Cast Your Vote! 🎉</h2>
-              <p class="subtitle">Select your name, pick your favorite resort, and submit!</p>
+              <h2 class="title-resort">Vote For Your Pick! 🎉</h2>
+              <p class="subtitle">Tap your name, then tap <strong>Vote YES</strong> for your resort!</p>
             </div>
 
-            <div class="voter-selector-grid" id="voterSelectorGrid"></div>
-            <div class="story-vote-cards" id="storyVoteCards"></div>
+            <!-- Voter Selector Bar -->
+            <div class="voter-selector-bar">
+              <span class="voter-selector-label">1. Select Who Is Voting:</span>
+              <div class="voter-tabs-row" id="voterTabsRow"></div>
+            </div>
 
-            <button class="btn-submit-story-vote" onclick="submitStoryVote()">Submit My Vote 🗳️</button>
-            <div class="story-tally-box" id="storyTallyBox"></div>
+            <!-- Simple Vote List -->
+            <div class="simple-ballot-list" id="simpleBallotList"></div>
+
+            <!-- Live Scoreboard -->
+            <div class="live-tally-card" id="liveTallyCard"></div>
 
             <div class="slide-footer">
               <span>Family Board Voting</span>
@@ -1067,25 +1123,28 @@
       }
       progressContainer.innerHTML = progressHTML;
 
-      renderVoterSelector();
-      renderVoteCards();
+      renderVoterPills();
+      renderBallotList();
       renderTally();
       updateSlide();
     }
 
-    function renderVoterSelector() {
-      const grid = document.getElementById('voterSelectorGrid');
-      if (!grid) return;
+    // =========================================================================
+    // VOTING LOGIC
+    // =========================================================================
+    function renderVoterPills() {
+      const row = document.getElementById('voterTabsRow');
+      if (!row) return;
 
-      grid.innerHTML = FAMILY_MEMBERS.map(m => {
+      row.innerHTML = FAMILY_MEMBERS.map(m => {
         const isActive = activeVoter === m.id;
         const hasVoted = !!votingVotes[m.id];
         return `
-          <div class="voter-btn-story ${isActive ? 'active' : ''} ${hasVoted ? 'has-voted' : ''}" 
-               onclick="event.stopPropagation(); selectVoter('${m.id}')">
-            <span class="voter-ico">${m.avatar}</span>
-            <span class="voter-name">${m.name}</span>
-            <span class="voter-check">${hasVoted ? '✓ Voted' : 'Pending'}</span>
+          <div class="voter-pill ${isActive ? 'active' : ''} ${hasVoted ? 'voted' : ''}" 
+               onclick="selectVoter('${m.id}')">
+            <span class="v-ico">${m.avatar}</span>
+            <span class="v-name">${m.name}</span>
+            <span class="v-check">${hasVoted ? '✓ Voted' : 'Pick'}</span>
           </div>
         `;
       }).join('');
@@ -1093,118 +1152,151 @@
 
     function selectVoter(voterId) {
       activeVoter = voterId;
-      renderVoterSelector();
-      renderVoteCards();
+      renderVoterPills();
+      renderBallotList();
     }
 
-    function renderVoteCards() {
-      const container = document.getElementById('storyVoteCards');
+    function renderBallotList() {
+      const container = document.getElementById('simpleBallotList');
       if (!container) return;
 
       const currentVote = votingVotes[activeVoter];
 
       container.innerHTML = RESORTS.map(r => {
-        const isSelected = currentVote === r.id;
+        const isPicked = currentVote === r.id;
         return `
-          <div class="story-vote-card ${isSelected ? 'selected' : ''}" 
-               onclick="event.stopPropagation(); castVote('${r.id}')">
-            <div>
-              <div class="vote-card-title">${r.name}</div>
-              <div class="vote-card-sub">${r.price} · Score: ${r.score}</div>
+          <div class="ballot-item-row ${isPicked ? 'is-picked' : ''}" onclick="toggleVote('${r.id}')">
+            <div class="ballot-title">
+              <strong>${r.name}</strong>
+              <span>${r.price} · ${r.savings}</span>
             </div>
-            <div class="story-radio-dot"></div>
+            <button class="btn-vote-yes">
+              ${isPicked ? '✓ VOTED YES' : '👍 Vote YES'}
+            </button>
           </div>
         `;
       }).join('');
     }
 
-    function castVote(resortId) {
-      votingVotes[activeVoter] = resortId;
+    function toggleVote(resortId) {
+      if (votingVotes[activeVoter] === resortId) {
+        // Unvote if tapped again
+        delete votingVotes[activeVoter];
+      } else {
+        // Vote YES for this resort
+        votingVotes[activeVoter] = resortId;
+      }
       localStorage.setItem('teen_story_votes', JSON.stringify(votingVotes));
-      renderVoterSelector();
-      renderVoteCards();
+      renderVoterPills();
+      renderBallotList();
       renderTally();
     }
 
-    function submitStoryVote() {
-      if (!votingVotes[activeVoter]) {
-        alert("Please tap your favorite resort above first!");
-        return;
-      }
+    function quickVoteForResort(resortId) {
+      votingVotes[activeVoter] = resortId;
+      localStorage.setItem('teen_story_votes', JSON.stringify(votingVotes));
       const member = FAMILY_MEMBERS.find(m => m.id === activeVoter);
-      const chosenResort = RESORTS.find(r => r.id === votingVotes[activeVoter]);
-      alert(`🎉 Vote Recorded!\n${member.name} voted for: ${chosenResort.name}`);
+      const chosenResort = RESORTS.find(r => r.id === resortId);
+      alert(`🎉 ${member.name} voted for ${chosenResort.name}!\nTaking you to the live board tally...`);
+      jumpToVote();
     }
 
     function renderTally() {
-      const container = document.getElementById('storyTallyBox');
+      const container = document.getElementById('liveTallyCard');
       if (!container) return;
 
-      const counts = {};
-      RESORTS.forEach(r => counts[r.id] = 0);
-      let total = 0;
+      const tally = {};
+      RESORTS.forEach(r => {
+        tally[r.id] = { resort: r, votes: 0, voters: [] };
+      });
 
-      Object.values(votingVotes).forEach(resortId => {
-        if (counts[resortId] !== undefined) {
-          counts[resortId]++;
-          total++;
+      let totalVoted = 0;
+      FAMILY_MEMBERS.forEach(m => {
+        const pick = votingVotes[m.id];
+        if (pick && tally[pick]) {
+          tally[pick].votes++;
+          tally[pick].voters.push(m);
+          totalVoted++;
         }
       });
 
-      const sorted = [...RESORTS].sort((a, b) => counts[b.id] - counts[a.id]);
-      const leader = counts[sorted[0].id] > 0 ? sorted[0] : null;
+      const sorted = Object.values(tally).sort((a, b) => b.votes - a.votes);
+      const leader = sorted[0]?.votes > 0 ? sorted[0] : null;
 
-      let winnerHTML = '';
+      let bannerHTML = '';
       if (leader) {
-        winnerHTML = `
+        bannerHTML = `
           <div class="tally-winner-banner">
             <span>🏆 Current Leader:</span>
-            <strong>${leader.name} (${counts[leader.id]} vote${counts[leader.id] > 1 ? 's' : ''})</strong>
+            <strong>${leader.resort.name} (${leader.votes} vote${leader.votes > 1 ? 's' : ''})</strong>
           </div>
         `;
       }
 
-      let rowsHTML = sorted.map(r => {
-        const c = counts[r.id] || 0;
-        const pct = total > 0 ? Math.round((c / 5) * 100) : 0;
+      let breakdownHTML = sorted.map(item => {
+        const pct = totalVoted > 0 ? Math.round((item.votes / 5) * 100) : 0;
         return `
-          <div style="display: flex; justify-content: space-between; font-size: 11px; margin-top: 3px;">
-            <span>${r.name}</span>
-            <strong>${c} vote${c===1?'':'s'}</strong>
-          </div>
-          <div style="height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden; margin-bottom: 4px;">
-            <div style="width: ${pct}%; height: 100%; background: #ff2a70; border-radius: 3px;"></div>
+          <div style="margin-top: 4px;">
+            <div style="display: flex; justify-content: space-between; font-size: 11px; margin-bottom: 2px;">
+              <strong style="color: #fff;">${item.resort.name}</strong>
+              <span style="color: #38bdf8; font-weight: 800;">${item.votes} vote${item.votes === 1 ? '' : 's'}</span>
+            </div>
+            <div style="height: 5px; background: rgba(255,255,255,0.15); border-radius: 3px; overflow: hidden;">
+              <div style="width: ${pct}%; height: 100%; background: linear-gradient(90deg, #ff2a70, #8b5cf6); border-radius: 3px;"></div>
+            </div>
+            ${item.voters.length > 0 ? `
+              <div class="tally-member-chips">
+                ${item.voters.map(v => `<span class="v-chip">${v.avatar} ${v.name}</span>`).join('')}
+              </div>
+            ` : ''}
           </div>
         `;
       }).join('');
 
       container.innerHTML = `
-        ${winnerHTML}
-        <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-sub); margin-bottom: 4px;">
-          <span>Turnout: <strong>${total} / 5 Voted</strong></span>
-          <span style="color: #38bdf8; cursor: pointer;" onclick="event.stopPropagation(); resetStoryVotes()">Reset</span>
+        ${bannerHTML}
+        <div style="display: flex; justify-content: space-between; font-size: 11px; color: var(--text-sub); margin-bottom: 6px;">
+          <span>Turnout: <strong>${totalVoted} of 5 Voted</strong></span>
+          <span style="color: #ff2a70; font-weight: 700; cursor: pointer;" onclick="resetStoryVotes()">Reset All</span>
         </div>
-        ${rowsHTML}
+        ${breakdownHTML}
       `;
     }
 
     function resetStoryVotes() {
-      if (confirm("Reset all board votes?")) {
+      if (confirm("Reset all 5 board votes?")) {
         votingVotes = {};
         localStorage.removeItem('teen_story_votes');
-        renderVoterSelector();
-        renderVoteCards();
+        renderVoterPills();
+        renderBallotList();
         renderTally();
       }
     }
 
-    // Navigation
+    // =========================================================================
+    // NAVIGATION & TOUCH CONTROLS
+    // =========================================================================
     function updateSlide() {
       const wrapper = document.getElementById('slidesWrapper');
       wrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
 
       const counter = document.getElementById('storySlideCounter');
       if (counter) counter.innerText = `${currentSlide + 1} of ${totalSlides}`;
+
+      // Disable tap zones on the voting slide so clicks go straight to buttons!
+      const tapLeft = document.getElementById('tapLeft');
+      const tapRight = document.getElementById('tapRight');
+      const isVotingSlide = (currentSlide === totalSlides - 1);
+
+      if (tapLeft && tapRight) {
+        if (isVotingSlide) {
+          tapLeft.classList.add('disabled');
+          tapRight.classList.add('disabled');
+        } else {
+          tapLeft.classList.remove('disabled');
+          tapRight.classList.remove('disabled');
+        }
+      }
 
       for (let i = 0; i < totalSlides; i++) {
         const seg = document.getElementById(`seg-${i}`);
@@ -1238,7 +1330,9 @@
       updateSlide();
     }
 
-    // Video Modal
+    // =========================================================================
+    // VIDEO MODAL
+    // =========================================================================
     function openVideoModal(resortId) {
       const resort = RESORTS.find(r => r.id === resortId);
       if (!resort) return;
@@ -1273,7 +1367,7 @@
       modal.classList.remove('open');
     }
 
-    // Touch Support
+    // Touch Swipe Support (only active on non-voting slides)
     let touchStartX = 0;
     let touchEndX = 0;
 
@@ -1283,8 +1377,11 @@
 
     document.addEventListener('touchend', e => {
       touchEndX = e.changedTouches[0].screenX;
-      if (touchEndX < touchStartX - 40) nextSlide();
-      if (touchEndX > touchStartX + 40) prevSlide();
+      // Do not swipe-skip on voting slide so scrolling through resorts is smooth!
+      if (currentSlide !== totalSlides - 1) {
+        if (touchEndX < touchStartX - 50) nextSlide();
+        if (touchEndX > touchStartX + 50) prevSlide();
+      }
     }, { passive: true });
 
     document.addEventListener('keydown', e => {
