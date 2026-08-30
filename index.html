@@ -750,7 +750,7 @@
       background: rgba(255, 255, 255, 0.25);
     }
 
-    /* Modern TikTok / Short Video Modal */
+    /* Modern Video Modal (Adapts to 9:16 vertical shorts or 16:9 widescreen reviews) */
     .video-modal-backdrop {
       position: fixed;
       top: 0;
@@ -772,7 +772,7 @@
 
     .video-modal-card {
       width: 100%;
-      max-width: 380px;
+      max-width: 440px;
       background: #0f1322;
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 26px;
@@ -780,6 +780,7 @@
       display: flex;
       flex-direction: column;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+      transition: max-width 0.2s ease;
     }
 
     .video-modal-head {
@@ -796,7 +797,7 @@
       color: white;
       font-size: 10px;
       font-weight: 800;
-      padding: 2px 7px;
+      padding: 2px 8px;
       border-radius: 8px;
       margin-bottom: 2px;
     }
@@ -822,11 +823,9 @@
       justify-content: center;
     }
 
-    /* 9:16 Vertical Video Box for Shorts */
     .video-player-box {
       width: 100%;
-      aspect-ratio: 9 / 16;
-      max-height: 60vh;
+      aspect-ratio: 16 / 9;
       background: black;
       position: relative;
     }
@@ -843,6 +842,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 8px;
     }
 
     .btn-direct-yt-app {
@@ -857,6 +857,7 @@
       align-items: center;
       gap: 6px;
       box-shadow: 0 4px 14px rgba(255, 0, 0, 0.4);
+      white-space: nowrap;
     }
 
     .btn-switch-tour-mode {
@@ -865,9 +866,10 @@
       color: #38bdf8;
       font-size: 11px;
       font-weight: 700;
-      padding: 4px 10px;
-      border-radius: 10px;
+      padding: 6px 12px;
+      border-radius: 12px;
       cursor: pointer;
+      white-space: nowrap;
     }
   </style>
 </head>
@@ -893,13 +895,13 @@
     <div class="slides-wrapper" id="slidesWrapper"></div>
   </div>
 
-  <!-- TikTok / Shorts Video Modal -->
+  <!-- Video Review Modal -->
   <div id="videoModal" class="video-modal-backdrop" onclick="if(event.target===this) closeVideoModal()">
-    <div class="video-modal-card" onclick="event.stopPropagation()">
+    <div class="video-modal-card" id="videoModalCard" onclick="event.stopPropagation()">
       <div class="video-modal-head">
         <div>
-          <span class="video-type-badge" id="videoModalBadge">⚡ 60s TikTok Short</span>
-          <h3 id="videoModalTitle">Resort Quick Tour</h3>
+          <span class="video-type-badge" id="videoModalBadge">🎙️ Narrated Video Review</span>
+          <h3 id="videoModalTitle">Resort Review</h3>
         </div>
         <button class="btn-close-vmodal" onclick="closeVideoModal()">✕</button>
       </div>
@@ -907,10 +909,10 @@
       <div class="video-modal-foot">
         <div class="video-modal-foot-top">
           <button class="btn-switch-tour-mode" id="btnToggleTourMode" onclick="toggleTourMode()">
-            🔄 Switch to Full Tour
+            🔄 Switch Tour
           </button>
           <a id="videoDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="btn-direct-yt-app">
-            ▶ Open in YouTube ↗
+            ▶ Open on YouTube ↗
           </a>
         </div>
       </div>
@@ -919,7 +921,7 @@
 
   <script>
     // =========================================================================
-    // VERIFIED SHORT-FORM (TIKTOK / SHORTS) & FULL WALKTHROUGH RESORT DATA
+    // NARRATED REVIEWS (DIALOGUE & SPOKEN OVERVIEW) + FULL TOURS
     // =========================================================================
     const RESORTS = [
       {
@@ -940,9 +942,11 @@
           { icon: "🌊", text: "100% Oceanfront rooms + 17 restaurants & dessert bars" },
           { icon: "💵", text: "Saves $1,145 compared to repeating Hyatt Ziva" }
         ],
-        shortTitle: "AVA Resort Cancun (60s TikTok Vibe & Food Tour)",
-        shortId: "CW6D3XqOktQ",
-        shortUrl: "https://www.youtube.com/shorts/CW6D3XqOktQ",
+        reviewTitle: "AVA Resort Cancun (88s Food, Room & Lagoon Tour)",
+        reviewId: "CW6D3XqOktQ",
+        reviewUrl: "https://www.youtube.com/shorts/CW6D3XqOktQ",
+        reviewAspect: "vertical",
+        reviewRuntime: "88s Narrated Review",
         fullTitle: "AVA Resort Cancun 4K Full Walkthrough",
         fullId: "i9kkI7slSWE",
         fullUrl: "https://www.youtube.com/watch?v=i9kkI7slSWE"
@@ -965,10 +969,12 @@
           { icon: "🏖️", text: "Calm protected turquoise beach (Bahía de Mujeres)" },
           { icon: "🎉", text: "Walkable access to RIU Party entertainment next door" }
         ],
-        shortTitle: "Riu Palace Peninsula (Quick Walkthrough & Beach)",
-        shortId: "kT6A0GcrAtg",
-        shortUrl: "https://www.youtube.com/shorts/kT6A0GcrAtg",
-        fullTitle: "Riu Palace Peninsula Cancun Full Tour & Review",
+        reviewTitle: "Riu Palace Peninsula (Honest Review & Walkthrough)",
+        reviewId: "v7msSQHpHiE",
+        reviewUrl: "https://www.youtube.com/watch?v=v7msSQHpHiE",
+        reviewAspect: "wide",
+        reviewRuntime: "Honest Walkthrough & Review",
+        fullTitle: "Riu Palace Peninsula Cancun Full Tour",
         fullId: "Mc0asIEcNh4",
         fullUrl: "https://www.youtube.com/watch?v=Mc0asIEcNh4"
       },
@@ -990,9 +996,11 @@
           { icon: "💰", text: "Lowest price in the entire field ($1,221 per person)" },
           { icon: "🍹", text: "Junior suites with ocean views & 24hr room service" }
         ],
-        shortTitle: "Riu Palace Costa Mujeres (Pool & Beach Vibes 😎🌴)",
-        shortId: "eV2O8Ij7N9Q",
-        shortUrl: "https://www.youtube.com/shorts/eV2O8Ij7N9Q",
+        reviewTitle: "Riu Palace Costa Mujeres (5-Minute Review & Campus Tour)",
+        reviewId: "3uzMK16_-tE",
+        reviewUrl: "https://www.youtube.com/watch?v=3uzMK16_-tE",
+        reviewAspect: "wide",
+        reviewRuntime: "5-Min Narrated Review",
         fullTitle: "Riu Palace Costa Mujeres Full Campus Tour",
         fullId: "P0j0QIAoDo8",
         fullUrl: "https://www.youtube.com/watch?v=P0j0QIAoDo8"
@@ -1015,9 +1023,11 @@
           { icon: "🇩🇴", text: "Genuinely different country (Dominican Republic)" },
           { icon: "🍽️", text: "Modern junior suites + upscale à la carte dining" }
         ],
-        shortTitle: "Lopesan Costa Bavaro (Punta Cana Quick Tour)",
-        shortId: "0b9_N0j9YOk",
-        shortUrl: "https://www.youtube.com/shorts/0b9_N0j9YOk",
+        reviewTitle: "Lopesan Costa Bavaro (Tour & Boulevard Review)",
+        reviewId: "yhlCauRVtpc",
+        reviewUrl: "https://www.youtube.com/watch?v=yhlCauRVtpc",
+        reviewAspect: "wide",
+        reviewRuntime: "3-Min Tour & Review",
         fullTitle: "Lopesan Costa Bavaro Full Resort Tour",
         fullId: "It2cPymf2YU",
         fullUrl: "https://www.youtube.com/watch?v=It2cPymf2YU"
@@ -1040,9 +1050,11 @@
           { icon: "🎉", text: "RIU Party themed events & Arena Gorda beach" },
           { icon: "🍔", text: "32 food & drink venues + new American food court" }
         ],
-        shortTitle: "Revamped Riu Palace Bavaro (30s Quick Highlights ✨)",
-        shortId: "2oYhl-bYYOU",
-        shortUrl: "https://www.youtube.com/shorts/2oYhl-bYYOU",
+        reviewTitle: "Riu Palace Bavaro (Honest Review & 2024 Remodel)",
+        reviewId: "MipNtLsFl3E",
+        reviewUrl: "https://www.youtube.com/watch?v=MipNtLsFl3E",
+        reviewAspect: "wide",
+        reviewRuntime: "Honest Walkthrough & Review",
         fullTitle: "Riu Palace Bavaro Full Renovation Tour",
         fullId: "TWByFVrvXQ4",
         fullUrl: "https://www.youtube.com/watch?v=TWByFVrvXQ4"
@@ -1065,10 +1077,12 @@
           { icon: "✨", text: "Zero learning curve & reliable 5-star service" },
           { icon: "⚠️", text: "Zero novelty: repeating a trip already taken" }
         ],
-        shortTitle: "Hyatt Ziva Puerto Vallarta (Quick Cove & Pool Tour)",
-        shortId: "7z0pAn0ZNAY",
-        shortUrl: "https://www.youtube.com/shorts/7z0pAn0ZNAY",
-        fullTitle: "Hyatt Ziva Puerto Vallarta Full Review & Tour",
+        reviewTitle: "Hyatt Ziva Puerto Vallarta (4-Min Honest Tour & Review)",
+        reviewId: "xeiIHNFzWEs",
+        reviewUrl: "https://www.youtube.com/watch?v=xeiIHNFzWEs",
+        reviewAspect: "wide",
+        reviewRuntime: "4-Min Honest Tour & Review",
+        fullTitle: "Hyatt Ziva Puerto Vallarta Full Review 2025",
         fullId: "isia0Ea5AIw",
         fullUrl: "https://www.youtube.com/watch?v=isia0Ea5AIw"
       }
@@ -1088,7 +1102,7 @@
     let activeVoter = "sofia";
     let votingVotes = JSON.parse(localStorage.getItem('teen_story_votes') || '{}');
     let currentModalResortId = null;
-    let currentModalMode = "short"; // "short" or "full"
+    let currentModalMode = "review"; // "review" or "full"
 
     // Build Story App
     function init() {
@@ -1102,7 +1116,7 @@
             <div>
               <span class="badge" style="background: linear-gradient(135deg, #ff2a70, #8b5cf6);">✈️ Thanksgiving 2026</span>
               <h1 class="title-large">Where Are We<br>Going Next?! 🌴</h1>
-              <p class="subtitle">5 Travelers · Nov 20–24 · 4 Nights from ORD.<br>Swipe through our 5 challengers + repeat, watch 60-second TikTok tours, and vote!</p>
+              <p class="subtitle">5 Travelers · Nov 20–24 · 4 Nights from ORD.<br>Swipe through our 5 challengers + repeat, watch narrated video reviews, and vote!</p>
             </div>
 
             <div class="lead-card" style="text-align: center; padding: 22px 14px;">
@@ -1163,7 +1177,7 @@
             <div>
               <span class="badge">🏝️ The Final 6 Options</span>
               <h2 class="title-resort">The Contenders</h2>
-              <p class="subtitle">Tap any resort below to jump straight to its short tour:</p>
+              <p class="subtitle">Tap any resort below to jump straight to its review:</p>
             </div>
 
             <div class="lineup-grid">
@@ -1203,7 +1217,7 @@
               <span>6 Finalists</span>
               <div class="nav-buttons-row">
                 <button class="btn-nav-step" onclick="event.stopPropagation(); prevSlide()">← Back</button>
-                <button class="btn-nav-step" onclick="event.stopPropagation(); nextSlide()">Start Tours →</button>
+                <button class="btn-nav-step" onclick="event.stopPropagation(); nextSlide()">Start Reviews →</button>
               </div>
             </div>
           </div>
@@ -1212,7 +1226,7 @@
 
       // 4. DETAILED RESORT PROFILES (2 slides per resort = 12 slides)
       RESORTS.forEach((r, idx) => {
-        // Page 1: Tagline, Vibe & 60s TikTok Tour
+        // Page 1: Tagline, Vibe & Narrated Video Review
         slidesHTML += `
           <div class="slide" style="background: radial-gradient(circle at top right, rgba(0,242,254,0.22), transparent 60%), radial-gradient(circle at bottom left, rgba(255,42,112,0.28), transparent 60%);">
             <div class="slide-content">
@@ -1241,10 +1255,10 @@
               </div>
 
               <div class="action-btn-row">
-                <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}', 'short')">
+                <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}', 'review')">
                   <span style="display: flex; align-items: center; gap: 8px;">
                     <span class="pulse-play">▶</span>
-                    <span>Watch 60s TikTok Tour ⚡</span>
+                    <span>Watch Video Review 🎙️</span>
                   </span>
                   <span style="font-size: 11px; opacity: 0.85;">Play →</span>
                 </button>
@@ -1287,12 +1301,12 @@
               </div>
 
               <div class="action-btn-row">
-                <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}', 'short')">
+                <button class="story-video-btn" onclick="event.stopPropagation(); openVideoModal('${r.id}', 'review')">
                   <span style="display: flex; align-items: center; gap: 8px;">
                     <span class="pulse-play">▶</span>
-                    <span>Watch Quick Tour ⚡</span>
+                    <span>Watch Review 🎙️</span>
                   </span>
-                  <span style="font-size: 11px; opacity: 0.85;">60s →</span>
+                  <span style="font-size: 11px; opacity: 0.85;">Tour →</span>
                 </button>
                 <button class="story-instant-vote-btn" onclick="event.stopPropagation(); quickVoteForResort('${r.id}')">
                   👍 Vote YES
@@ -1322,8 +1336,8 @@
             </div>
           </div>
           <div class="scorecard-right">
-            <button class="btn-video-icon" onclick="event.stopPropagation(); openVideoModal('${r.id}', 'short')" title="Watch 60s Short">
-              ⚡ 60s Short
+            <button class="btn-video-icon" onclick="event.stopPropagation(); openVideoModal('${r.id}', 'review')" title="Watch ${r.name} Review">
+              ▶ Review
             </button>
           </div>
         </div>
@@ -1335,7 +1349,7 @@
             <div>
               <span class="badge">📊 Final Comparison</span>
               <h2 class="title-resort">The Scorecard</h2>
-              <p class="subtitle">Rankings based on pools, food & fun. Tap ⚡ 60s Short to preview any resort!</p>
+              <p class="subtitle">Rankings based on pools, food & fun. Tap ▶ Review to play narrated walkthroughs!</p>
             </div>
 
             <div class="scorecard-list">
@@ -1553,11 +1567,9 @@
     // CONTAINER TAP & NAVIGATION
     // =========================================================================
     function handleContainerTap(e) {
-      // Ignore clicks on buttons, links, cards, pills, modals, inputs
       if (e.target.closest('button, a, iframe, .video-modal-card, .voter-pill, .ballot-item-row, .lineup-item, .scorecard-card')) {
         return;
       }
-      // On voting slide, do not tap-navigate
       if (currentSlide === totalSlides - 1) return;
 
       const rect = document.getElementById('storyContainer').getBoundingClientRect();
@@ -1616,9 +1628,9 @@
     }
 
     // =========================================================================
-    // SHORT-FORM / TIKTOK VIDEO MODAL + WALKTHROUGH TOGGLE
+    // VIDEO MODAL (RESPONSIVE NARRATED REVIEW + FULL WALKTHROUGH TOGGLE)
     // =========================================================================
-    function openVideoModal(resortId, mode = "short") {
+    function openVideoModal(resortId, mode = "review") {
       currentModalResortId = resortId;
       currentModalMode = mode;
 
@@ -1626,25 +1638,33 @@
       if (!resort) return;
 
       const modal = document.getElementById('videoModal');
+      const modalCard = document.getElementById('videoModalCard');
       const badge = document.getElementById('videoModalBadge');
       const title = document.getElementById('videoModalTitle');
       const box = document.getElementById('videoIframeBox');
       const direct = document.getElementById('videoDirectLink');
       const toggleBtn = document.getElementById('btnToggleTourMode');
 
-      const isShort = (currentModalMode === "short");
-      const activeVidId = isShort ? resort.shortId : resort.fullId;
-      const activeTitle = isShort ? resort.shortTitle : resort.fullTitle;
-      const activeUrl = isShort ? resort.shortUrl : resort.fullUrl;
+      const isReview = (currentModalMode === "review");
+      const activeVidId = isReview ? resort.reviewId : resort.fullId;
+      const activeTitle = isReview ? resort.reviewTitle : resort.fullTitle;
+      const activeUrl = isReview ? resort.reviewUrl : resort.fullUrl;
+      const isVertical = isReview && (resort.reviewAspect === "vertical");
 
-      badge.innerText = isShort ? "⚡ 60s TikTok Short" : "🎬 Full Walkthrough Tour";
-      badge.style.background = isShort ? "linear-gradient(135deg, #ff2a70, #ff007a)" : "linear-gradient(135deg, #0284c7, #2563eb)";
+      badge.innerText = isReview ? `🎙️ ${resort.reviewRuntime}` : "🎬 Full Walkthrough Tour";
+      badge.style.background = isReview ? "linear-gradient(135deg, #ff2a70, #ff007a)" : "linear-gradient(135deg, #0284c7, #2563eb)";
       title.innerText = activeTitle;
       direct.href = activeUrl;
-      toggleBtn.innerText = isShort ? "🔄 Switch to Full Tour (20m)" : "⚡ Switch to 60s Short";
+      toggleBtn.innerText = isReview ? "🔄 Switch to Full Tour" : "🎙️ Switch to Short Review";
 
-      // Adjust aspect ratio for shorts vs full
-      box.style.aspectRatio = isShort ? "9 / 16" : "16 / 9";
+      // Responsive aspect ratio
+      if (isVertical) {
+        box.style.aspectRatio = "9 / 16";
+        modalCard.style.maxWidth = "380px";
+      } else {
+        box.style.aspectRatio = "16 / 9";
+        modalCard.style.maxWidth = "460px";
+      }
 
       box.innerHTML = `
         <iframe width="100%" height="100%" 
@@ -1661,7 +1681,7 @@
 
     function toggleTourMode() {
       if (!currentModalResortId) return;
-      currentModalMode = (currentModalMode === "short") ? "full" : "short";
+      currentModalMode = (currentModalMode === "review") ? "full" : "review";
       openVideoModal(currentModalResortId, currentModalMode);
     }
 
